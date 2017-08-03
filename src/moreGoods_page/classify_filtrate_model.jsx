@@ -7,7 +7,7 @@ class ClassifyFiltrateModel extends Component {
                 <div className='total-classify-row'>
                     <ul className='tabs'>
                         <li className='tab'>
-                            <a className='link selected' href="">所有宝贝——test</a>
+                            <a className='link selected' href="">所有宝贝</a>
                         </li>
                     </ul>
                 </div>
