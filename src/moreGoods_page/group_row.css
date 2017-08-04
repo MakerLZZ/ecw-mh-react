@@ -1,0 +1,56 @@
+.group-row {
+    position: relative;
+}
+
+.group-row .head {
+    position: absolute;
+    left: 11px;
+    top: 9px;
+    color: #999;
+}
+
+.group-row .body {
+    padding: 0 100px 0 112px;
+}
+
+
+/* .group-row .body .items {
+    height: 36px;
+    overflow: hidden;
+} */
+
+.group-row .body .items .items-inner {
+    display: table;
+}
+
+.group-row .body .items .item {
+    float: left;
+    margin: 9px 40px 9px 0;
+    height: 18px;
+    color: #000;
+    text-decoration: none;
+}
+
+.group-row .body .items .item .text {
+    float: left;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.group-row .foot {
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+
+.group-row .foot .show-more {
+    position: absolute;
+    right: 10px;
+    height: 18px;
+    padding-right: 10px;
+    line-height: 18px;
+    cursor: pointer;
+    white-space: nowrap;
+}
