@@ -3,6 +3,7 @@ import './group_row.css'
 import GroupRowItem from './group_row_item'
 import ShowMoreButton from './show_more_button'
 import PropTypes from 'prop-types'
+
 var showMoreStyle = {
     height: "auto",
     maxHeight: "102px",
@@ -16,13 +17,15 @@ var closeShowMoreStyle = {
 
 class GroupRow extends Component {
     static propTypes = {
-        data: PropTypes.array
+        data: PropTypes.array,
     }
 
+    
+
     mapGroupRowItem = () => {
-        return this.props.data.map(function (v) {
-            return (
-                <GroupRowItem text={v} key={v}></GroupRowItem>
+        return this.props.data.map(function(v){
+            return(
+                <GroupRowItem text={v} key={v} />
             )
         })
     }
@@ -38,7 +41,7 @@ class GroupRow extends Component {
 
     render() {
         return (
-            <div className='group-row'>
+            <div className='group-row' id={this.props.id}>
                 <div className="head">
                     {this.props.classifyName}
                 </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Icon} from 'antd';
 import PropTypes from 'prop-types'
+import './show_more_button.css'
 
 class ShowMoreButton extends Component {
 
@@ -14,7 +15,7 @@ class ShowMoreButton extends Component {
             <a className="show-more" onClick={this.props.handleClose}>
                 <span>
                     <span>{this.props.close ? '更多':'收起'}</span>
-                    <Icon type="down" className="show-more-down"/>
+                    <Icon style={{fontSize:12}} type={this.props.close ? 'down':'up'} className="show-more-down"/>
                 </span>
             </a>
         );

@@ -1,5 +1,11 @@
 .group-row {
     position: relative;
+    margin: 0 8px;
+    border-top: 1px dashed #dedede;
+}
+
+#group_row_0 {
+    border-top: 0;
 }
 
 .group-row .head {
@@ -10,33 +16,11 @@
 }
 
 .group-row .body {
-    padding: 0 100px 0 112px;
+    padding: 0 100px 0 160px;
 }
-
-
-/* .group-row .body .items {
-    height: 36px;
-    overflow: hidden;
-} */
 
 .group-row .body .items .items-inner {
     display: table;
-}
-
-.group-row .body .items .item {
-    float: left;
-    margin: 9px 40px 9px 0;
-    height: 18px;
-    color: #000;
-    text-decoration: none;
-}
-
-.group-row .body .items .item .text {
-    float: left;
-    max-width: 140px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .group-row .foot {
