@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Icon} from 'antd';
 import './classify_filtrate_model.css'
 import GroupRow from './group_row'
-
+import Text from './test'
 const SHOWTEXT = "显示筛选";
 const CLOSETEXT = "收起筛选";
 
@@ -10,7 +10,7 @@ var group_rows=[
     {
         'key': 0,
         'group_row_num': 'group_row_0',
-        'classifyName': "零食/坚果/特产：",
+        'classifyName': "类型：",
         'id':'group_row_0'
     },{
         'key': 1,
@@ -158,11 +158,10 @@ class ClassifyFiltrateModel extends Component {
                     data={group[index]}
                     classifyName={v.classifyName}
                     id={v.id}
-                    key={v.key}></GroupRow>
+                    key={index}></GroupRow>
             )
         })
     }
-
 
     render() {
         return (
@@ -183,6 +182,7 @@ class ClassifyFiltrateModel extends Component {
                             </span>
                         </a>
                         <span>所有分类></span>
+                        <Text/>
                     </div>
                     <div className='filtrate-groups-box' style={{display:this.state.groupsBox}}>
                         <div className='group'>

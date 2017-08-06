@@ -22,10 +22,10 @@ class GroupRow extends Component {
 
     
 
-    mapGroupRowItem = () => {
+    mapGroupRowItem = (classifyName) => {
         return this.props.data.map(function(v){
             return(
-                <GroupRowItem text={v} key={v} />
+                <GroupRowItem text={v} key={v} classifyName={classifyName} />
             )
         })
     }
@@ -48,7 +48,7 @@ class GroupRow extends Component {
                 <div className="body">
                     <div className="items" style={this.state.close ?closeShowMoreStyle:showMoreStyle }>
                         <div className="items-inner">
-                            {this.mapGroupRowItem()}
+                            {this.mapGroupRowItem(this.props.classifyName)}
                         </div>
                     </div>
                 </div>
