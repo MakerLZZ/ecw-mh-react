@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
 import './home_goods_list_item.css'
+import {Link} from 'react-router-dom'
 
 class GoodsItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            className: 'goods-box'
-        }
+
+    state={
+        className: 'goods-box'
     }
+
     handleMouseOver = (e) => {
         this.setState({className: 'goods-box goods-box-active'});
     }
     handleMouseOut = () => {
         this.setState({className: 'goods-box'});
     }
+    
     render() {
         return (
             <div
@@ -22,14 +23,16 @@ class GoodsItem extends Component {
                 onMouseOut={this.handleMouseOut}
                 id={this.props.no}>
                 <div className="pic-box">
-                    <a
+                    <Link
                         className="goods_box_a"
-                        href="/Reception/GoodsDetailsView?no={this.props.no}"
-                        target="_blank">
+                        /* href="/Reception/GoodsDetailsView?no={this.props.no}" */
+                        to={"/goods_detail/"+this.props.no}
+                        /* target="_blank" */
+                        >
                         <div className="goods-img">
                             <img src={this.props.img_src} alt=""/>
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div className="ctx-box">
                     <div className="ctx-box-row-1">
@@ -41,12 +44,13 @@ class GoodsItem extends Component {
                             人付款</div>
                     </div>
                     <div className="ctx-box-row-2">
-                        <a
+                        <Link
                             className="goods_box_a"
-                            href="/Reception/GoodsDetailsView?no=@item.no"
-                            target="_blank">
+                            to={"/goods_detail/"+this.props.no}
+                            /* target="_blank" */
+                            >
                             <span className="ctx-box-row-tilte">{this.props.goods_title}</span>
-                        </a>
+                        </Link>
                     </div>
                     <div className="ctx-box-row-3">
                         <div className="location">{this.props.goods_location}</div>
