@@ -1,0 +1,41 @@
+.goods-detail-left {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px;
+    height: 500px;
+    width: 420px;
+    text-align: left;
+    background-color: #f4f4f4;
+}
+
+.goods-detail-left .top {
+    margin-bottom: 15px;
+    width: 400px;
+    height: 400px;
+    background-color: #f20;
+}
+
+.goods-detail-left .bottom {
+    width: 400px;
+    background-color: #d98;
+}
+
+.goods-detail-left ul li {
+    float: left;
+    margin-right: 9px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    transition-property: border-color;
+    transition-duration: .2s;
+    overflow: hidden;
+}
+
+.goods-detail-left .pic {
+    width: 50px;
+    height: 50px;
+}
+
+.goods-detail-left .pic img {
+    vertical-align: middle;
+}

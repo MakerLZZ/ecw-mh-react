@@ -7,6 +7,7 @@ import TopGoods from './home_page_img/top_goods.png';
 
 import Ad_Img_1 from './home_page_img/carousel_ad_1.png'
 import Ad_Img_2 from './home_page_img/carousel_ad_2.png'
+import Ad_Img_3 from './home_page_img/carousel_ad_3.png'
 
 class HomePageTop extends Component {
     render() {
@@ -21,7 +22,7 @@ class HomePageTop extends Component {
                             <img src={Ad_Img_2} alt=""/>
                         </div>
                         <div>
-                            <img src={Ad_Img_1} alt=""/>
+                            <img src={Ad_Img_3} alt=""/>
                         </div>
                         <div>
                             <img src={Ad_Img_2} alt=""/>
