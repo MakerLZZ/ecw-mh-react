@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import './group_row_item.css'
+import PropTypes from 'prop-types'
 class GroupRowItem extends Component {
     
-    choseCondition(classifyName,text){
-        alert(classifyName+text);
+    static propTypes = {
+        handleConditionClick:PropTypes.func
     }
 
     render() {
         return (
             <a className="item" 
-                onClick={()=>this.choseCondition(this.props.classifyName,this.props.text)}
+                onClick={()=>this.props.handleConditionClick(this.props.classifyName+this.props.text,this.props.groupRowId)}
                 >
                 <span className="text">{this.props.text}</span>
                 {this.props.children}

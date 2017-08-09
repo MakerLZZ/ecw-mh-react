@@ -8,7 +8,10 @@ class Text extends Component {
 
     handleClick=()=> {
         const error_state_now =this.state.error_state;
-        this.setState({error_state: !error_state_now, error_message:'<a href="">{classifyName+text}<span>x</span></a>'});
+        this.setState({
+            error_state: !error_state_now, 
+            error_message:'<a href="">{classifyName+text}<span>x</span></a>'
+        });
     }
 
     render() {

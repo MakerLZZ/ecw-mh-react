@@ -16,16 +16,22 @@ var closeShowMoreStyle = {
 }
 
 class GroupRow extends Component {
+    
     static propTypes = {
         data: PropTypes.array,
+        handleConditionClick:PropTypes.func
     }
 
-    
-
-    mapGroupRowItem = (classifyName) => {
-        return this.props.data.map(function(v){
+    mapGroupRowItem = (classifyName,id) => {
+        return this.props.data.map(v =>{
             return(
-                <GroupRowItem text={v} key={v} classifyName={classifyName} />
+                <GroupRowItem 
+                    text={v} 
+                    key={v} 
+                    classifyName={classifyName}
+                    groupRowId={id}
+                    handleConditionClick={this.props.handleConditionClick}
+                />
             )
         })
     }
@@ -41,19 +47,19 @@ class GroupRow extends Component {
 
     render() {
         return (
-            <div className='group-row' id={this.props.id}>
+            <div className={this.props.className} id={this.props.id}>
                 <div className="head">
                     {this.props.classifyName}
                 </div>
                 <div className="body">
-                    <div className="items" style={this.state.close ?closeShowMoreStyle:showMoreStyle }>
+                    <div className="items" style={this.state.close ? closeShowMoreStyle:showMoreStyle }>
                         <div className="items-inner">
-                            {this.mapGroupRowItem(this.props.classifyName)}
+                            {this.mapGroupRowItem(this.props.classifyName,this.props.id)}
                         </div>
                     </div>
                 </div>
                 <div className="foot">
-                      <ShowMoreButton handleClose={()=> this.handleClose()} close={this.state.close} className="show-more" />  
+                      <ShowMoreButton handleClose={()=> this.handleClose()} close={this.state.close} />  
                 </div>
                 {this.props.children}
             </div>

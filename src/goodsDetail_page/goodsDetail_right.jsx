@@ -43,32 +43,42 @@ var msg_2 = [
     }
 ]
 
+
+var goodsDetail = [
+    {
+        'goodsTitle':'Lay’s/乐事薯片飘香麻辣锅味70g*6袋 休闲膨化吃货零食',
+        'goodsPrice':'29.80',
+        'goodsSalse':'1',
+        'goodsTaste':'黑胡椒味',
+        'goodsInventory':'5'
+    }
+]
+
 class GoodsDetailRight extends Component {
-    MapItem = () => {
-        return msg_1.map(v => {
-            return (
-                <GoodsDetailRightImg 
-                    src={v.img_src} 
-                    title={v.img_title} 
-                    key={v.key}/>
-            )
-        })
+    MapItem = (flag) => {
+        if (flag) {
+            return msg_1.map(v => {
+                return (<GoodsDetailRightImg src={v.img_src} title={v.img_title} key={v.key}/>)
+            })
+        } else {
+            return msg_2.map(v => {
+                return (
+                    <GoodsDetailRightImg src={v.img_src} title={v.img_title} key={v.key}></GoodsDetailRightImg>
+                )
+            })
+        }
     }
 
-    MapItem_ = () => {
-        return msg_2.map(v => {
-            return (
-                <GoodsDetailRightImg src={v.img_src} title={v.img_title} key={v.key}></GoodsDetailRightImg>
-            )
-        })
-
+    state={
+        value:1,
     }
 
+    
     render() {
         return (
             <div className='goods-detail-right'>
                 <div className='goods-title'>
-                    <h3 className='goods-main-title'>Lay’s/乐事薯片飘香麻辣锅味70g*6袋 休闲膨化吃货零食</h3>
+                    <h3 className='goods-main-title'>{goodsDetail[0].goodsTitle}</h3>
                 </div>
                 <ul className='goods-price'>
                     <li className='goods-price-title'>
@@ -77,13 +87,13 @@ class GoodsDetailRight extends Component {
                     <li className='goods-price-num'>
                         <strong>
                             <span className='rmb'>￥</span>
-                            <span className='rmb-num'>29.80</span>
+                            <span className='rmb-num'>{goodsDetail[0].goodsPrice}</span>
                         </strong>
                     </li>
                     <li className='goods-sales'>
                         <div>
                             <div className='goods-sales-num'>
-                                <span>1</span>
+                                <span>{goodsDetail[0].goodsSalse}</span>
                             </div>
                             <div>
                                 <span>交易成功</span>
@@ -93,21 +103,19 @@ class GoodsDetailRight extends Component {
                 </ul>
                 <div className='sep-line'></div>
                 <div className='goods-taste'>
-                    <div>
-                        <span className='goods-taste-type'>口味</span>
-                        <span>黑胡椒味</span>
-                    </div>
+                    <span className='goods-taste-type'>口味</span>
+                    <span className='goods-taste-title'>{goodsDetail[0].goodsTaste}</span>
                 </div>
                 <div className='goods-select-num'>
                     <div>
                         <span className='goods-select-type'>数量</span>
                         <span className='goods-select-stock'>
                             <a className='disable-reduce reduce'>-</a>
-                            <input type="text" className='text' value='1' maxLength='8'/>
+                            <input type="text" className='text'  maxLength='8'/>
                             <a className='disable-increase increase'>+</a>
                             件
                         </span>
-                        <span className='goods-select-type'>(库存5件)</span>
+                        <span className='goods-select-inventory'>(库存{goodsDetail[0].goodsInventory}件)</span>
                     </div>
                 </div>
                 <div className='buy-box'>
@@ -117,9 +125,7 @@ class GoodsDetailRight extends Component {
                     <div className='add'>
                         <a href="" className='btn-a'><Icon
                             type="shopping-cart"
-                            style={{
-                marginRight: 5
-            }}/>加入购物车</a>
+                            style={{marginRight: 5}}/>加入购物车</a>
                     </div>
                 </div>
                 <div className='bottom'>
@@ -128,7 +134,7 @@ class GoodsDetailRight extends Component {
                             <span>承诺</span>
                         </div>
                         <div className='bottom-a'>
-                            {this.MapItem()}
+                            {this.MapItem(true)}
                         </div>
                     </div>
                     <div className='bottom-row'>
@@ -136,7 +142,7 @@ class GoodsDetailRight extends Component {
                             <span>支付</span>
                         </div>
                         <div className='bottom-a'>
-                            {/* {this.MapItem_()} */}
+                            {this.MapItem(false)}
                         </div>
                     </div>
                 </div>

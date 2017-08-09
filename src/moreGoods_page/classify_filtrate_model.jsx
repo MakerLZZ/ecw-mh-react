@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Icon} from 'antd';
 import './classify_filtrate_model.css'
 import GroupRow from './group_row'
-import Text from './test'
+import GroupTag from './group_tag'
+
 const SHOWTEXT = "显示筛选";
 const CLOSETEXT = "收起筛选";
 
@@ -132,14 +133,15 @@ var group={
 ]
 }
 
+
 class ClassifyFiltrateModel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showFiltrateButton: CLOSETEXT,
-            groupsBox : "block",
-            icon:"up"
-        }
+   
+    state={
+        showFiltrateButton: CLOSETEXT,
+        groupsBox : "block",
+        icon:"up",
+        groupRowClassName:'group-row',
+        tags:[],
     }
 
     handleShowClick=()=>{
@@ -151,6 +153,28 @@ class ClassifyFiltrateModel extends Component {
         }
     }
 
+    handleConditionClick=(text,id)=>{
+        //孙子组件 点击事件返回至祖父组件方法体中 父组件某个元素隐藏
+        var groupRow = document.getElementById(id)
+        groupRow.style.display='none'
+        
+        var tagArr = this.state.tags;
+        var tag= text;
+        tagArr.push(tag);
+        this.setState({
+            tags:tagArr
+        })
+    }
+
+    mapTags=()=>{
+        var tags = this.state.tags;
+        return tags.map((v)=>{
+            return (
+                <GroupTag key={v} text={v}/>
+            )
+        })
+    }
+
     mapGroupRowNums=()=>{
         return group_rows.map((v,index) => {
             return (
@@ -158,7 +182,10 @@ class ClassifyFiltrateModel extends Component {
                     data={group[index]}
                     classifyName={v.classifyName}
                     id={v.id}
-                    key={index}></GroupRow>
+                    key={index}
+                    handleConditionClick={(text,id)=>this.handleConditionClick(text,id)}
+                    className={this.state.groupRowClassName}
+                    ></GroupRow>
             )
         })
     }
@@ -181,8 +208,9 @@ class ClassifyFiltrateModel extends Component {
                                 <Icon type={this.state.icon} className="expand-collapse-down" />
                             </span>
                         </a>
-                        <span>所有分类></span>
-                        <Text/>
+                        <span className='all-text'>所有分类</span>
+                        <Icon type='right' className='icon-right' />
+                        {this.mapTags()}
                     </div>
                     <div className='filtrate-groups-box' style={{display:this.state.groupsBox}}>
                         <div className='group'>

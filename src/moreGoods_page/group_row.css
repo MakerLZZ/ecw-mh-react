@@ -1,11 +1,15 @@
 .group-row {
     position: relative;
     margin: 0 8px;
-    border-top: 1px dashed #dedede;
+    border-bottom: 1px dashed #dedede;
 }
 
-#group_row_0 {
-    border-top: 0;
+.hidden {
+    display: none;
+}
+
+#group_row_bottom {
+    border-bottom: 0;
 }
 
 .group-row .head {

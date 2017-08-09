@@ -87,14 +87,11 @@
     overflow: hidden;
 }
 
-.goods-taste,
-.goods-select-num {
-    display: inline-block;
-    vertical-align: middle;
-}
-
 .goods-taste {
-    padding-left: 10px;
+    padding: 10px 10px;
+    margin: 20px 0;
+    height: 30px;
+    line-height: 20px;
 }
 
 .goods-taste .goods-taste-type {
@@ -102,12 +99,30 @@
     width: 60px;
 }
 
+.goods-taste .goods-taste-title {
+    float: left;
+    padding: 0 5px;
+    border: 2px solid #F40;
+    color: #F40
+}
+
+.goods-select-num {
+    margin: 20px 0;
+    height: 26px;
+}
+
 .goods-select-num .goods-select-type {
     float: left;
-    margin: 0 10px 0 5px;
-    width: 55px;
+    margin: 0 10px 0 10px;
+    width: 50px;
     height: 26px;
     line-height: 26px
+}
+
+.goods-select-num .goods-select-inventory {
+    float: left;
+    height: 26px;
+    line-height: 26px;
 }
 
 .goods-select-num .goods-select-stock {
@@ -164,7 +179,7 @@
 
 .goods-detail-right .buy-box {
     margin-top: 20px;
-    position: relative;
+    width: 100%;
     overflow: hidden;
 }
 
