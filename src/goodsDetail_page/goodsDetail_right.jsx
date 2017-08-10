@@ -43,16 +43,17 @@ var msg_2 = [
     }
 ]
 
-
 var goodsDetail = [
     {
-        'goodsTitle':'Lay’s/乐事薯片飘香麻辣锅味70g*6袋 休闲膨化吃货零食',
-        'goodsPrice':'29.80',
-        'goodsSalse':'1',
-        'goodsTaste':'黑胡椒味',
-        'goodsInventory':'5'
+        'goodsTitle': 'Lay’s/乐事薯片飘香麻辣锅味70g*6袋 休闲膨化吃货零食',
+        'goodsPrice': '29.80',
+        'goodsSalse': '1',
+        'goodsTaste': '黑胡椒味',
+        'goodsInventory': '5'
     }
 ]
+
+const inventory = goodsDetail[0].goodsInventory
 
 class GoodsDetailRight extends Component {
     MapItem = (flag) => {
@@ -69,11 +70,66 @@ class GoodsDetailRight extends Component {
         }
     }
 
-    state={
-        value:1,
+    state = {
+        value: 1,
+        reduceClassName: 'reduce',
+        increaseClassName: 'increase'
     }
 
-    
+    componentWillMount(){
+        this.startLoad();
+    }
+
+    startLoad(){
+        this.setState({reduceClassName: 'disable-reduce reduce'})
+    }
+
+    onChange(o) {
+        const reg = /^[0-9]*[1-9][0-9]*$/;
+        var newValue = o.target.value;
+        var maxValue = parseInt(inventory);
+        //console.log(newValue)
+        if(newValue>maxValue){
+            this.setState({
+                value:maxValue
+            })
+        }else if ((!isNaN(newValue) && reg.test(newValue)) || newValue === '') {
+           this.setState({value: newValue})
+        }
+    }
+
+    handleReduceClick() {
+        var minValue = 1;
+        var maxValue = inventory;
+        var currentValue = this.state.value;
+        var valueReduce = currentValue - 1;
+
+        if (valueReduce > minValue) {
+            this.setState({value: valueReduce})
+        } else if (valueReduce == minValue) {
+            this.setState({value: valueReduce, reduceClassName: 'disable-reduce reduce'})
+        }
+        if (valueReduce < maxValue) {
+            this.setState({increaseClassName: 'increase'})
+        }
+    }
+
+    handleIncreaseClick() {
+        var minValue = 1;
+        var maxValue = inventory;
+        var currentValue = this.state.value;
+        var valueIncrease = currentValue + 1;
+
+        if (valueIncrease < maxValue) {
+            this.setState({value: valueIncrease})
+        } else if (valueIncrease == maxValue) {
+            this.setState({value: valueIncrease, increaseClassName: 'disable-increase increase'})
+        }
+        if (valueIncrease > minValue) {
+            this.setState({reduceClassName: 'reduce'})
+        }
+    }
+
     render() {
         return (
             <div className='goods-detail-right'>
@@ -110,13 +166,25 @@ class GoodsDetailRight extends Component {
                     <div>
                         <span className='goods-select-type'>数量</span>
                         <span className='goods-select-stock'>
-                            <a className='disable-reduce reduce'>-</a>
-                            <input type="text" className='text'  maxLength='8'/>
-                            <a className='disable-increase increase'>+</a>
+                            <a
+                                className={this.state.reduceClassName}
+                                onClick={() => this.handleReduceClick()}>-</a>
+                            <input
+                                onChange={(e) => this.onChange(e)}
+                                type="text"
+                                className='text'
+                                value={this.state.value}
+                                maxLength='8'/>
+                            <a
+                                className={this.state.increaseClassName}
+                                onClick={() => this.handleIncreaseClick()}>+</a>
                             件
                         </span>
                         <span className='goods-select-inventory'>(库存{goodsDetail[0].goodsInventory}件)</span>
                     </div>
+                </div>
+                <div className='goods-num-tip'>
+                    <p>您填写的宝贝数量超过库存</p>
                 </div>
                 <div className='buy-box'>
                     <div className='buy'>
