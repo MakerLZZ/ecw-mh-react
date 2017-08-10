@@ -130,8 +130,37 @@
     line-height: 26px;
 }
 
+.goods-detail-right .hidden {
+    display: none;
+}
+
+.goods-num-tip {
+    position: relative;
+    margin-left: 69px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.goods-num-tips {
+    background-position: 3px -47px;
+    color: #404040;
+    border: 1px solid #ddd;
+    float: left;
+    padding: 2px 10px 2px 23px;
+    line-height: 18px;
+    border-color: #ff8080;
+    background-color: #fff2f2;
+}
+
+.goods-num-icon {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    color: #F40
+}
+
 .goods-select-stock .disable-reduce,
-.disable-increase {
+.goods-select-stock .disable-increase {
     color: #ccc;
     cursor: not-allowed;
     background-color: #ededed;
@@ -144,12 +173,15 @@
     width: 26px;
     height: 26px;
     border: 1px solid #ccc;
-    line-height: 26px;
+    line-height: 22px;
     padding: 0;
     overflow: hidden;
     text-align: center;
+    color: #616161;
     background-color: #ededed;
     overflow: hidden;
+    font-size: 25px;
+    font-weight: 900;
 }
 
 .goods-select-stock input {

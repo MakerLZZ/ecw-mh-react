@@ -53,7 +53,7 @@ var goodsDetail = [
     }
 ]
 
-const inventory = goodsDetail[0].goodsInventory
+const inventory = parseInt(goodsDetail[0].goodsInventory);
 
 class GoodsDetailRight extends Component {
     MapItem = (flag) => {
@@ -73,40 +73,45 @@ class GoodsDetailRight extends Component {
     state = {
         value: 1,
         reduceClassName: 'reduce',
-        increaseClassName: 'increase'
+        increaseClassName: 'increase',
+        tipClassName: 'goods-num-tip hidden'
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.startLoad();
     }
 
-    startLoad(){
+    startLoad() {
         this.setState({reduceClassName: 'disable-reduce reduce'})
     }
 
     onChange(o) {
+        this.setState({tipClassName: 'goods-num-tip hidden'})
         const reg = /^[0-9]*[1-9][0-9]*$/;
-        var newValue = o.target.value;
-        var maxValue = parseInt(inventory);
-        //console.log(newValue)
-        if(newValue>maxValue){
-            this.setState({
-                value:maxValue
-            })
-        }else if ((!isNaN(newValue) && reg.test(newValue)) || newValue === '') {
-           this.setState({value: newValue})
+        var newValue = parseInt(o.target.value);
+        var minValue = 1;
+        var maxValue = inventory;
+        if (newValue >= maxValue) {
+            this.setState({value: newValue, increaseClassName: 'disable-increase increase', reduceClassName: 'reduce', tipClassName: 'goods-num-tip'})
+        } else if (newValue === minValue) {
+            this.setState({value: newValue, reduceClassName: 'disable-reduce reduce', increaseClassName: 'increase'})
+        } else if ((!isNaN(newValue) && reg.test(newValue)) || newValue.toString() === '') {
+            this.setState({value: newValue, increaseClassName: 'increase'})
         }
     }
 
     handleReduceClick() {
+        var currentValue = this.state.value;
         var minValue = 1;
         var maxValue = inventory;
-        var currentValue = this.state.value;
+        if (currentValue <= maxValue) {
+            this.setState({tipClassName: 'goods-num-tip hidden'})
+        }
         var valueReduce = currentValue - 1;
 
         if (valueReduce > minValue) {
             this.setState({value: valueReduce})
-        } else if (valueReduce == minValue) {
+        } else if (valueReduce === minValue) {
             this.setState({value: valueReduce, reduceClassName: 'disable-reduce reduce'})
         }
         if (valueReduce < maxValue) {
@@ -118,11 +123,13 @@ class GoodsDetailRight extends Component {
         var minValue = 1;
         var maxValue = inventory;
         var currentValue = this.state.value;
+        if (currentValue <= maxValue) {
+            this.setState({tipClassName: 'goods-num-tip hidden'})
+        }
         var valueIncrease = currentValue + 1;
-
         if (valueIncrease < maxValue) {
             this.setState({value: valueIncrease})
-        } else if (valueIncrease == maxValue) {
+        } else if (valueIncrease === maxValue) {
             this.setState({value: valueIncrease, increaseClassName: 'disable-increase increase'})
         }
         if (valueIncrease > minValue) {
@@ -183,8 +190,9 @@ class GoodsDetailRight extends Component {
                         <span className='goods-select-inventory'>(库存{goodsDetail[0].goodsInventory}件)</span>
                     </div>
                 </div>
-                <div className='goods-num-tip'>
-                    <p>您填写的宝贝数量超过库存</p>
+                <div className={this.state.tipClassName}>
+                    <Icon type="minus-circle" className='goods-num-icon'/>
+                    <p className='goods-num-tips'>您填写的宝贝数量超过库存</p>
                 </div>
                 <div className='buy-box'>
                     <div className='buy'>
@@ -193,7 +201,9 @@ class GoodsDetailRight extends Component {
                     <div className='add'>
                         <a href="" className='btn-a'><Icon
                             type="shopping-cart"
-                            style={{marginRight: 5}}/>加入购物车</a>
+                            style={{
+                marginRight: 5
+            }}/>加入购物车</a>
                     </div>
                 </div>
                 <div className='bottom'>
