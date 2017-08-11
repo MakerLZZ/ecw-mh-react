@@ -82,6 +82,7 @@ const Basic = () => (
     <Router>
         <div>
             <TopMenuVisitor/>
+            <TopMenu/>
             <NavFooter/>
             <Route exact path="/" component={Home}/>
             <Route exact path="/more_goods" component={MoreGoods}/>
