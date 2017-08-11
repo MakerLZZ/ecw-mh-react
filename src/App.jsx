@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
 import TopMenu from './nav/top_menu';
+import TopMenuVisitor from './nav/top_menu_visitor';
 import NavFooter from './nav/nav_footer'
 import PageBottom from './nav/page_bottom'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import HomePageModel from './home_page/home_page_model'
 import MoreGoodsPageModel from './moreGoods_page/moreGoods_page_model'
 import GoodsDetailPageModel from './goodsDetail_page/goodsDetail_page_model'
-
+import RegisterPageModel from './register_page/register_page_model'
 const Home = ({match}) => (
     <div>
         <HomePageModel/>
@@ -25,7 +26,16 @@ const MoreGoods = ({match}) => (
 const GoodsDetail = ({match}) => {
     return (
         <div>
-            <GoodsDetailPageModel no={match.params.id} />
+            <GoodsDetailPageModel no={match.params.id}/>
+            <Route path={`${match.url}/:branchId`} component={Branch}/>
+        </div>
+    )
+}
+
+const Register = ({match}) => {
+    return (
+        <div>
+            <RegisterPageModel/>
             <Route path={`${match.url}/:branchId`} component={Branch}/>
         </div>
     )
@@ -71,11 +81,12 @@ const Cart = ({match}) => {
 const Basic = () => (
     <Router>
         <div>
-            <TopMenu/>
+            <TopMenuVisitor/>
             <NavFooter/>
             <Route exact path="/" component={Home}/>
             <Route exact path="/more_goods" component={MoreGoods}/>
             <Route exact path="/goods_detail/:id" component={GoodsDetail}/>
+            <Route exact path="/register" component={Register}/>
             <Route path="/avatar" component={Avater_}/>
             <Route path="/person_center" component={PersonCenter}/>
             <Route path="/cart" component={Cart}/>

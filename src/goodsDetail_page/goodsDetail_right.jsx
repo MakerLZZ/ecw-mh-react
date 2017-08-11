@@ -81,6 +81,7 @@ class GoodsDetailRight extends Component {
         this.startLoad();
     }
 
+
     startLoad() {
         this.setState({reduceClassName: 'disable-reduce reduce'})
     }
@@ -91,7 +92,8 @@ class GoodsDetailRight extends Component {
         var newValue = parseInt(o.target.value);
         var minValue = 1;
         var maxValue = inventory;
-        if (newValue >= maxValue) {
+        if (newValue >= maxValue) {  
+            this.refs.numInput.select();
             this.setState({value: newValue, increaseClassName: 'disable-increase increase', reduceClassName: 'reduce', tipClassName: 'goods-num-tip'})
         } else if (newValue === minValue) {
             this.setState({value: newValue, reduceClassName: 'disable-reduce reduce', increaseClassName: 'increase'})
@@ -176,7 +178,7 @@ class GoodsDetailRight extends Component {
                             <a
                                 className={this.state.reduceClassName}
                                 onClick={() => this.handleReduceClick()}>-</a>
-                            <input
+                            <input ref="numInput"
                                 onChange={(e) => this.onChange(e)}
                                 type="text"
                                 className='text'
