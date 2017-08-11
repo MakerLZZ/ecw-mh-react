@@ -37,7 +37,7 @@ class TopMenuVisitor extends Component {
                         onCancel={this.hideModal}
                         footer={null}
                         width='300px'>
-                            <LoginBox visible={this.state.visible}/>
+                            <LoginBox hideModal={()=> this.hideModal()}/>
                     </Modal>
                 </div>
             </div>

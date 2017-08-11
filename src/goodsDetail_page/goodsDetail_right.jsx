@@ -53,7 +53,7 @@ var goodsDetail = [
     }
 ]
 
-const inventory = parseInt(goodsDetail[0].goodsInventory);
+const inventory = parseInt(goodsDetail[0].goodsInventory,10);
 
 class GoodsDetailRight extends Component {
     MapItem = (flag) => {
@@ -89,7 +89,7 @@ class GoodsDetailRight extends Component {
     onChange(o) {
         this.setState({tipClassName: 'goods-num-tip hidden'})
         const reg = /^[0-9]*[1-9][0-9]*$/;
-        var newValue = parseInt(o.target.value);
+        var newValue = parseInt(o.target.value,10);
         var minValue = 1;
         var maxValue = inventory;
         if (newValue >= maxValue) {  

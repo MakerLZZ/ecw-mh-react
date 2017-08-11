@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './login_box.css'
-import {Form, Icon, Input, Button, Checkbox} from 'antd';
+import {Form, Icon, Input,Button, message,Tooltip} from 'antd';
 import PropTypes from 'prop-types'
 const userName = '123'
 const password = '123'
 const FormItem = Form.Item;
+
 class LoginBox extends Component {
     static propTypes = {
-        visible: PropTypes.bool
+        hideModal: PropTypes.func
     }
 
     handleSubmit = (e) => {
@@ -17,14 +18,12 @@ class LoginBox extends Component {
                 var userNameInput = values.userName;
                 var passwordInput = values.password;
                 if (userNameInput === userName && passwordInput === password) {
-                    alert('登录成功');
-                    this.setState({
-                        visible:false
-                    })
-                }else if(userNameInput !=userName){
-                    alert('用户名不存在');
-                }else if(userNameInput === userName&&passwordInput!=password ){
-                    alert('密码错误');
+                    message.success('欢迎来到吃货世界！');
+                    this.props.hideModal()
+                }else if(userNameInput !==userName){
+                    message.error('没有找到此账号，请核实后再试');
+                }else if(userNameInput === userName&&passwordInput!==password ){
+                    message.error('密码输错了哟，亲！');
                 }
                 console.log('Received values of form: '+userName+'/'+password);
             }
@@ -39,13 +38,19 @@ class LoginBox extends Component {
                         rules: [
                             {
                                 required: true,
-                                message: '请输入你的账号!'
+                                message: '请输入你的账号!',
+                                whitespace:true,
                             }
                         ]
                     })(
-                        <Input
-                            prefix={< Icon type = "user" style = {{ fontSize: 13 }}/>}
+                        /* <Tooltip 
+                            visible={this.state.accountVisible}
+                            placement="right"
+                            title="账号不存在"> */
+                            <Input
+                            prefix={<Icon type="user" style = {{ fontSize: 13 }}/>}
                             placeholder="账号"/>
+                        //</Tooltip>
                     )}
                 </FormItem>
                 <FormItem>
@@ -53,14 +58,20 @@ class LoginBox extends Component {
                         rules: [
                             {
                                 required: true,
-                                message: '请输入你的密码!'
+                                message: '请输入你的密码!',
+                                whitespace:true,
                             }
                         ]
                     })(
-                        <Input
-                            prefix={< Icon type = "lock" style = {{ fontSize: 13 }}/>}
-                            type="password"
-                            placeholder=""/>
+                        /* <Tooltip 
+                            visible={this.state.passwordVisible}
+                            placement="right"
+                            title="密码错误"> */
+                            <Input
+                                prefix={<Icon type="lock" style = {{ fontSize: 13 }}/>}
+                                type="password"
+                                placeholder=""/>
+                        //</Tooltip>
                     )}
                 </FormItem>
                 <FormItem>
