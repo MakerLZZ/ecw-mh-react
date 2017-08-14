@@ -4,6 +4,7 @@ import {Modal} from 'antd'
 import './top_menu_visitor.css'
 import LoginBox from './login_box'
 
+
 class TopMenuVisitor extends Component {
     state = {
         visible: false

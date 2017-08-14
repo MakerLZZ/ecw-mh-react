@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Form, Icon, Input, Button, message} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 import PropTypes from 'prop-types'
 
-import './first_content.css'
+import './all_content.css'
 
 const FormItem = Form.Item;
 
@@ -49,14 +49,12 @@ class FirstContent extends Component {
             }
         };
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form className='all-content' onSubmit={this.handleSubmit}>
                 <FormItem {...formItemLayout} label="用户名" hasFeedback>
                     {getFieldDecorator('account', {
                         rules: [
+                            {type: 'string', message: '输入一个用户名!',},
                             {
-                                type: 'string',
-                                message: 'The input is not valid E-mail!'
-                            }, {
                                 required: true,
                                 message: '请输入长度大于6小于12的用户名'
                             },{
@@ -64,10 +62,10 @@ class FirstContent extends Component {
                                 message:'请输入数字或者英文字母组成的用户名'
                             },{
                                 min:6,
-                                message:'请输入长度大于6的用户名'
+                                message:'请输入长度大于6小于12的用户名'
                             },{
                                 max:12,
-                                message:'请输入长度小于12的用户名'
+                                message:'请输入长度大于6小于12的用户名'
                             }
                         ]
                     })(<Input/>)}

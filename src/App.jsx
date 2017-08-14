@@ -9,47 +9,6 @@ import HomePageModel from './home_page/home_page_model'
 import MoreGoodsPageModel from './moreGoods_page/moreGoods_page_model'
 import GoodsDetailPageModel from './goodsDetail_page/goodsDetail_page_model'
 import RegisterPageModel from './register_page/register_page_model'
-const Home = ({match}) => (
-    <div>
-        <HomePageModel/>
-        <Route path={`${match.url}/:branchId`} component={Branch}/>
-    </div>
-)
-
-const MoreGoods = ({match}) => (
-    <div>
-        <MoreGoodsPageModel/>
-        <Route path={`${match.url}/:branchId`} component={Branch}/>
-    </div>
-)
-
-const GoodsDetail = ({match}) => {
-    return (
-        <div>
-            <GoodsDetailPageModel no={match.params.id}/>
-            <Route path={`${match.url}/:branchId`} component={Branch}/>
-        </div>
-    )
-}
-
-const Register = ({match}) => {
-    return (
-        <div>
-            <RegisterPageModel/>
-            <Route path={`${match.url}/:branchId`} component={Branch}/>
-        </div>
-    )
-
-}
-
-const Branch = ({match}) => {
-    console.log(match);
-    return (
-        <div>
-            <h3>{match.params.branchId}</h3>
-        </div>
-    )
-}
 
 const Avater_ = ({match}) => {
     console.log(match);
@@ -78,31 +37,48 @@ const Cart = ({match}) => {
     )
 }
 
-const Basic = () => (
-    <Router>
-        <div>
-            <TopMenuVisitor/>
-            <TopMenu/>
-            <NavFooter/>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/more_goods" component={MoreGoods}/>
-            <Route exact path="/goods_detail/:id" component={GoodsDetail}/>
-            <Route exact path="/register" component={Register}/>
-            <Route path="/avatar" component={Avater_}/>
-            <Route path="/person_center" component={PersonCenter}/>
-            <Route path="/cart" component={Cart}/>
-            <PageBottom/>
-        </div>
-    </Router>
-)
-
 class App extends Component {
+    state = {
+
+    }
+    
+    setTopMenuVisitor(topMenuVisitor) {
+        if (!this.state.topMenuVisitor) 
+            this.setState({topMenuVisitor})
+    }
+
     render() {
         return (
             <div className="App">
-                <Basic/>
+                <Router>
+                    <div>
+                        <TopMenuVisitor
+                            ref={this.setTopMenuVisitor.bind(this)}/>
+                        <TopMenu/>
+                        <NavFooter/>
+                        <Route exact path="/" component={HomePageModel}/>
+                        <Route exact path="/more_goods" component={MoreGoodsPageModel}/>
+                        <Route
+                            exact
+                            path="/goods_detail/:id"
+                            render={({match}) =>< GoodsDetailPageModel no = {
+                            match.params.id
+                        } />}/>
+                        <Route
+                            exact
+                            path="/register"
+                            render={() =>< RegisterPageModel topMenuVisitor = {
+                            this.state.topMenuVisitor
+                        } > </RegisterPageModel>}/>
+                        <Route path="/avatar" component={Avater_}/>
+                        <Route path="/person_center" component={PersonCenter}/>
+                        <Route path="/cart" component={Cart}/>
+                        <PageBottom/>
+                    </div>
+                </Router>
             </div>
         );
     }
 }
+
 export default App;

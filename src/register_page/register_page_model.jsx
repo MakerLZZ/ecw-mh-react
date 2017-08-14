@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import {Steps, Button, message} from 'antd'
+import {Steps} from 'antd'
 import './register_page_model.css'
 import FirstContent from './first_content'
+import SecondContent from './second_content'
+import ThirdContent from './third_content'
+import logo from './register_page_img/logo110x55.png'
+import PropTypes from 'prop-types'
 
 const Step = Steps.Step
 
@@ -10,8 +14,12 @@ class RegisterPageModel extends Component {
         current: 0
     }
 
+    static propsTypes = {
+        topMenuVisitor : PropTypes.any
+    }
+
     let ={
-        account:'',
+        account:'1',
         password:0,
     }
 
@@ -21,19 +29,26 @@ class RegisterPageModel extends Component {
         this.setState({current});
     }
 
-    next() {
+    getPassword(e){
+        this.password=e
+        // ajax 注册用户（账号密码）
+        //并且跳到注册完成content
         const current = this.state.current + 1;
         this.setState({current});
     }
-
-    prev() {
-        const current = this.state.current - 1;
-        this.setState({current});
-    }
-    
+            
     render() {
+        //console.log(this.props.topMenuVisitor)
         const firstContent = (
             <FirstContent getAccount={(e)=> this.getAccount(e)} />
+        )
+
+        const secondContent = (
+            <SecondContent getPassword={(e)=> this.getPassword(e)} />
+        )
+
+        const thirdContent = (
+            <ThirdContent account={this.account} topMenuVisitor={this.props.topMenuVisitor} />
         )
 
         const steps = [
@@ -41,42 +56,26 @@ class RegisterPageModel extends Component {
                 title: '设置用户名',
                 content: firstContent
             }, {
-                title: 'Second',
-                content: 'Second-content'
+                title: '设置密码',
+                content: secondContent
             }, {
-                title: 'Last',
-                content: 'Last-content'
+                title: '注册成功',
+                content: thirdContent
             }
         ];
 
         return (
             <div className='register-page'>
-                <div>
-                    注册页面
+                <div className='register-page-top'>
+                    <img className="register-page-logo-img" src={logo} alt='' />
+                    <span className='register-page-title'>用户注册</span>
                 </div>
                 <div>
-                    <Steps current={this.state.current}>
+                    <Steps current={this.state.current} style={{color:'#F40'}}>
                         {steps.map(item => <Step key={item.title} title={item.title} />)}
                     </Steps>
                     <div className="steps-content">{steps[this.state.current].content}</div>
                     <div className="steps-action">
-                    {
-                        this.state.current < steps.length - 1
-                        &&
-                        <Button type="primary" onClick={() => this.next()}>下一步</Button>
-                    }
-                    {
-                        this.state.current === steps.length - 1
-                        &&
-                        <Button type="primary" onClick={() => message.success('注册成功!')}>完成</Button>
-                    }
-                    {/* {
-                        this.state.current > 0
-                        &&
-                        <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-                        Previous
-                        </Button>
-                    } */}
                     </div>
                 </div>
             </div>

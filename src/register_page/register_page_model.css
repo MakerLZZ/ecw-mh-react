@@ -1,5 +1,6 @@
 .register-page {
     margin: 0 200px;
+    font-family: 'Microsoft Yahei'
 }
 
 .steps-content {
@@ -13,4 +14,24 @@
 
 .steps-action {
     margin-top: 24px;
+}
+
+.register-page .register-page-top {
+    margin-bottom: 20px;
+}
+
+.register-page .register-page-top .register-page-logo-img {
+    vertical-align: middle;
+}
+
+.register-page .register-page-top .register-page-title {
+    display: inline-block;
+    zoom: 1;
+    height: 43px;
+    line-height: 43px;
+    margin-left: 6px;
+    font-size: 22px;
+    font-family: "\5FAE\8F6F\96C5\9ED1", "\534E\6587\7EC6\9ED1", "\9ED1\4F53", arial;
+    font-weight: 400;
+    vertical-align: middle;
 }
