@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './login_box.css'
-import {Form, Icon, Input,Button, message,Tooltip} from 'antd';
+import {Form, Icon, Input,Button, message} from 'antd';
 import PropTypes from 'prop-types'
 const userName = '123'
 const password = '123'

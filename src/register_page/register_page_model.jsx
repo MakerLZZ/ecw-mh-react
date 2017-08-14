@@ -1,26 +1,24 @@
 import React, {Component} from 'react';
 import {Steps, Button, message} from 'antd'
-
 import './register_page_model.css'
+import FirstContent from './first_content'
 
 const Step = Steps.Step
-
-const steps = [
-    {
-        title: 'First',
-        content: 'First-content'
-    }, {
-        title: 'Second',
-        content: 'Second-content'
-    }, {
-        title: 'Last',
-        content: 'Last-content'
-    }
-];
 
 class RegisterPageModel extends Component {
     state={
         current: 0
+    }
+
+    let ={
+        account:'',
+        password:0,
+    }
+
+    getAccount(e){
+        this.account=e
+        const current = this.state.current + 1;
+        this.setState({current});
     }
 
     next() {
@@ -34,6 +32,23 @@ class RegisterPageModel extends Component {
     }
     
     render() {
+        const firstContent = (
+            <FirstContent getAccount={(e)=> this.getAccount(e)} />
+        )
+
+        const steps = [
+            {
+                title: '设置用户名',
+                content: firstContent
+            }, {
+                title: 'Second',
+                content: 'Second-content'
+            }, {
+                title: 'Last',
+                content: 'Last-content'
+            }
+        ];
+
         return (
             <div className='register-page'>
                 <div>
@@ -48,12 +63,12 @@ class RegisterPageModel extends Component {
                     {
                         this.state.current < steps.length - 1
                         &&
-                        <Button type="primary" onClick={() => this.next()}>Next</Button>
+                        <Button type="primary" onClick={() => this.next()}>下一步</Button>
                     }
                     {
                         this.state.current === steps.length - 1
                         &&
-                        <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+                        <Button type="primary" onClick={() => message.success('注册成功!')}>完成</Button>
                     }
                     {/* {
                         this.state.current > 0
