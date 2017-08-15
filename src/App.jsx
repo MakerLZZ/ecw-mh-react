@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
+import './App_nav.css';
+import {message} from 'antd'
 import TopMenu from './nav/top_menu';
 import TopMenuVisitor from './nav/top_menu_visitor';
 import NavFooter from './nav/nav_footer'
@@ -39,12 +41,45 @@ const Cart = ({match}) => {
 
 class App extends Component {
     state = {
+        loginSuccess:false,
+        needFooter: true
+    }
 
+    hideFooter(){
+        this.setState({needFooter: false})
     }
     
+    showFooter(){
+        this.setState({needFooter: true})
+    }
+
     setTopMenuVisitor(topMenuVisitor) {
         if (!this.state.topMenuVisitor) 
             this.setState({topMenuVisitor})
+    }
+
+    login(){
+        this.setState({
+            loginSuccess: true,
+        },()=>{
+            //回调函数
+        });
+    }
+
+    logout(){
+        message.success('注销成功！');
+        this.setState({
+            loginSuccess: false
+        });
+    }
+    
+    navFooterHidden(nowPath){
+        const path = '/register'
+        if(nowPath===path){
+            this.setState({
+                navFooterHidden:true
+            })
+        }
     }
 
     render() {
@@ -53,9 +88,9 @@ class App extends Component {
                 <Router>
                     <div>
                         <TopMenuVisitor
-                            ref={this.setTopMenuVisitor.bind(this)}/>
-                        <TopMenu/>
-                        <NavFooter/>
+                            ref={this.setTopMenuVisitor.bind(this)} className={this.state.loginSuccess?'top-menu-visitor-hidden':'top-menu-visitor'} login={()=>this.login()} />
+                        <TopMenu className={this.state.loginSuccess?'top-menu':'top-menu-hidden'} logout={()=>this.logout()} />
+                        {this.state.needFooter ?<NavFooter/>:null }
                         <Route exact path="/" component={HomePageModel}/>
                         <Route exact path="/more_goods" component={MoreGoodsPageModel}/>
                         <Route
@@ -67,7 +102,7 @@ class App extends Component {
                         <Route
                             exact
                             path="/register"
-                            render={() =>< RegisterPageModel topMenuVisitor = {
+                            render={() =><RegisterPageModel showFooter={this.showFooter.bind(this)} hideFooter={this.hideFooter.bind(this)} topMenuVisitor = {
                             this.state.topMenuVisitor
                         } > </RegisterPageModel>}/>
                         <Route path="/avatar" component={Avater_}/>

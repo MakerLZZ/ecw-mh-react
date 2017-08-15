@@ -1,23 +1,37 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import {Modal} from 'antd'
+import {Modal,Icon} from 'antd'
 import './top_menu_visitor.css'
 import LoginBox from './login_box'
-
+import PropTypes from 'prop-types'
 
 class TopMenuVisitor extends Component {
+    static propTypes = {
+        className:PropTypes.string,
+        login:PropTypes.func
+    }
+
     state = {
         visible: false
     }
+
     showModal = () => {
         this.setState({visible: true})
     }
     hideModal = () => {
         this.setState({visible: false})
     }
+
+    errorModal() {
+        Modal.error({
+            title: '出错了，亲！',
+            content: '你还未登录，还不可访问该页面哟！',
+        });
+    }
+
     render() {
         return (
-            <div className=''>
+            <div className={this.props.className}>
                 <ul className='top-menu-visitor'>
                     <li className='login'>
                         <a onClick={this.showModal}>亲，请登录</a>
@@ -27,6 +41,13 @@ class TopMenuVisitor extends Component {
                     </li>
                     <li className='home'>
                         <Link to="/">网站首页</Link>
+                    </li>
+                    <li className='cart'>
+                        <Icon type="shopping-cart" className="shopping-cart-icon" />
+                        <a onClick={()=>this.errorModal()}>购物车</a>
+                    </li>
+                    <li className='person_center'>
+                    <a onClick={()=>this.errorModal()}>个人中心</a>
                     </li>
                 </ul>
                 <div className='fenkai'></div>
@@ -38,7 +59,7 @@ class TopMenuVisitor extends Component {
                         onCancel={this.hideModal}
                         footer={null}
                         width='300px'>
-                            <LoginBox hideModal={()=> this.hideModal()}/>
+                            <LoginBox hideModal={()=> this.hideModal()} login={this.props.login} />
                     </Modal>
                 </div>
             </div>

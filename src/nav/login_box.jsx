@@ -8,7 +8,8 @@ const FormItem = Form.Item;
 
 class LoginBox extends Component {
     static propTypes = {
-        hideModal: PropTypes.func
+        hideModal: PropTypes.func,
+        login:PropTypes.func
     }
 
     handleSubmit = (e) => {
@@ -19,13 +20,14 @@ class LoginBox extends Component {
                 var passwordInput = values.password;
                 if (userNameInput === userName && passwordInput === password) {
                     message.success('欢迎来到吃货世界！');
-                    this.props.hideModal()
+                    this.props.hideModal();
+                    //window.location.href='/';
+                    this.props.login();
                 }else if(userNameInput !==userName){
                     message.error('没有找到此账号，请核实后再试');
                 }else if(userNameInput === userName&&passwordInput!==password ){
                     message.error('密码输错了哟，亲！');
                 }
-                console.log('Received values of form: '+userName+'/'+password);
             }
         });
     }

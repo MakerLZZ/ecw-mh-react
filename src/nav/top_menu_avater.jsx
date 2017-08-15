@@ -3,23 +3,30 @@ import {Modal} from 'antd';
 import avater from './nav_img/tool.png';
 import './top_menu_avater.css';
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class Avater extends Component {
+    static propTypes = {
+        logout:PropTypes.func
+    }
     state = {
         ModalText: '真的不再逛逛了吗？',
         visible: false
     }
     showModal = () => {
-        this.setState({visible: true});
+        this.setState({
+            visible: true,
+            ModalText:'真的不再逛逛了吗？'
+        });
     }
     handleOk = () => {
-        this.setState({ModalText: 'The modal will be closed after two seconds', confirmLoading: true});
+        this.setState({ModalText: '正在注销', confirmLoading: true});
         setTimeout(() => {
+            this.props.logout();
             this.setState({visible: false, confirmLoading: false});
-        }, 1000);
+        }, 500);
     }
     handleCancel = () => {
-        console.log('Clicked cancel button');
         this.setState({visible: false});
     }
 
@@ -41,7 +48,7 @@ class Avater extends Component {
                 <div className='item-logout'>
                     <a className='nav-avater-a' onClick={this.showModal}>注销</a>
                     <Modal
-                        title="提示"
+                        title="温馨提示"
                         visible={this.state.visible}
                         onOk={this.handleOk}
                         confirmLoading={confirmLoading}

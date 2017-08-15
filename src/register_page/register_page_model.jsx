@@ -23,6 +23,10 @@ class RegisterPageModel extends Component {
         password:0,
     }
 
+    componentWillMount(){
+        this.props.hideFooter()
+    }
+
     getAccount(e){
         this.account=e
         const current = this.state.current + 1;
@@ -35,6 +39,10 @@ class RegisterPageModel extends Component {
         //并且跳到注册完成content
         const current = this.state.current + 1;
         this.setState({current});
+    }
+
+    componentWillUnmount(){
+        this.props.showFooter()
     }
             
     render() {
