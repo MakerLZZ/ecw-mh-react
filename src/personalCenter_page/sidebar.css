@@ -1,0 +1,7 @@
+.sidebar {
+    float: left
+}
+
+.sidebar ul li {
+    text-align: right
+}

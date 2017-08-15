@@ -16,6 +16,7 @@ class TopMenuVisitor extends Component {
     }
 
     showModal = () => {
+        console.log("???")
         this.setState({visible: true})
     }
     hideModal = () => {

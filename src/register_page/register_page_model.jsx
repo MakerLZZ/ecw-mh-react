@@ -46,7 +46,6 @@ class RegisterPageModel extends Component {
     }
             
     render() {
-        //console.log(this.props.topMenuVisitor)
         const firstContent = (
             <FirstContent getAccount={(e)=> this.getAccount(e)} />
         )

@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import './back_top.css';
 import UserAvatar from './home_page_img/default_avatar.png';
-
+import PropTypes from 'prop-types'
 class HomeTopLogout extends Component {
+
+    static propsTypes = {
+        topMenuVisitor: PropTypes.any
+    }
+
     render() {
         return (
             <div className="user-area">
@@ -19,10 +25,13 @@ class HomeTopLogout extends Component {
                 <div className="indent-condition">
                     <div className="not-login">
                         <div className="not-login-button">
-                            <a href="/Login/LoginView">登录</a>
+                            {/* {console.log(this.props.topMenuVisitor)} */}
+                            <a 
+                                //onClick={this.props.topMenuVisitor.showModal}
+                            >登录</a>
                         </div>
                         <div className="not-login-button">
-                            <a href="/Login/LoginView">注册</a>
+                            <Link to="/register">注册</Link>
                         </div>
                     </div>
                 </div>

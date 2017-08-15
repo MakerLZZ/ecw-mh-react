@@ -4,14 +4,18 @@ import HomeTopLogout from './home_top_logout';
 import {Carousel} from 'antd';
 import './home_top.css';
 import ad from './home_page_img/ad.png';
-
 import TopGoods from './home_page_img/top_goods.png';
-
 import Ad_Img_1 from './home_page_img/carousel_ad_1.png'
 import Ad_Img_2 from './home_page_img/carousel_ad_2.png'
 import Ad_Img_3 from './home_page_img/carousel_ad_3.png'
 
+import PropTypes from 'prop-types'
 class HomePageTop extends Component {
+    static propsTypes = {
+        loginSuccess : PropTypes.bool,
+        topMenuVisitor : PropTypes.any
+    }
+
     render() {
         return (
             <div className="home-page-top">
@@ -35,8 +39,9 @@ class HomePageTop extends Component {
                     <img src={ad} alt=""/>
                 </div>
                 <div className="home-page-top-right">
-                    <HomeTopLogin/>
-                    <HomeTopLogout/>
+                    {
+                        this.props.loginSuccess?<HomeTopLogin/>:<HomeTopLogout topMenuVisitor={this.props.topMenuVisitor} />
+                    }
                     <div className="goods-max">
                         <div className="goods-max-title">
                             <span>热门推荐</span>
