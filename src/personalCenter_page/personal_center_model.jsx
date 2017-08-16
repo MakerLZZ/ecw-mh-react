@@ -1,18 +1,41 @@
 import React, {Component} from 'react';
 import './personal_center_model.css'
-import Sidebar from './sidebar'
+import {Link} from 'react-router-dom'
 
 class PerCenModel extends Component {
-    
+    state={
+        activeMenuItem:'cart'
+    }
+
+    liActive=(str)=>{
+        this.setState({
+            activeMenuItem:str
+        })
+    }
+
     render() {
         return (
             <div className='personal-center-model'>
-                <Sidebar/>
-                {/* sidebar */}
-                
-                {/* 购物车块 */}
-                {/* 订单模块 */}
-                {/* 个人中心模块 */}
+                <div className='sidebar'>
+                    <ul>
+                        <li className='li'><span className='li-title'>个人中心</span></li>
+                        <li className={`${this.state.activeMenuItem === 'cart'?'li-active':'li'}`} key="cart">
+                            <Link to='/personal_center/cart'>
+                                <span>购物车</span>
+                            </Link>
+                        </li>
+                        <li className={`${this.state.activeMenuItem === 'order'?'li-active':'li'}`} key="order">
+                            <Link to='/personal_center/order'>
+                                <span>我的订单</span>
+                            </Link>
+                        </li>
+                        <li className={`${this.state.activeMenuItem === 'mine'?'li-active':'li'}`} key="mine">
+                            <Link to='/personal_center/mine'>
+                                <span>个人资料</span>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         );
     }

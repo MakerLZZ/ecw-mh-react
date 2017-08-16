@@ -12,6 +12,10 @@ import MoreGoodsPageModel from './moreGoods_page/moreGoods_page_model'
 import GoodsDetailPageModel from './goodsDetail_page/goodsDetail_page_model'
 import RegisterPageModel from './register_page/register_page_model'
 import PersonalCenterPageModel from './personalCenter_page/personal_center_model'
+import CartPageModel from './cart_page/cartPage_model'
+import OrderPageModel from './order_page/orderPage_model'
+import MinePageModel from './mine_page/minePage_model'
+
 const Avater_ = ({match}) => {
     console.log(match);
     return (
@@ -21,25 +25,16 @@ const Avater_ = ({match}) => {
     )
 }
 
-const Cart = ({match}) => {
-    console.log(match);
-    return (
-        <div>
-            <h1>CartPage</h1>
-        </div>
-    )
-}
-
 class App extends Component {
     state = {
-        loginSuccess:false,
+        loginSuccess:true,
         needFooter: true
     }
 
     hideFooter(){
         this.setState({needFooter: false})
     }
-    
+
     showFooter(){
         this.setState({needFooter: true})
     }
@@ -47,6 +42,11 @@ class App extends Component {
     setTopMenuVisitor(topMenuVisitor) {
         if (!this.state.topMenuVisitor) 
             this.setState({topMenuVisitor})
+    }
+
+    setPerCenPageModel(perCenPageModel) {
+        if (!this.state.perCenPageModel) 
+            this.setState({perCenPageModel})
     }
 
     login(){
@@ -95,26 +95,56 @@ class App extends Component {
                         <Route
                             exact
                             path="/goods_detail/:id"
-                            render={({match}) =><GoodsDetailPageModel no = {match.params.id}/>}/>
+                            render={({match}) =><GoodsDetailPageModel no = {match.params.id}/>}
+                        />
                         <Route
                             exact
                             path="/register"
                             render={
-                                () =><RegisterPageModel 
-                                showFooter={this.showFooter.bind(this)} 
-                                hideFooter={this.hideFooter.bind(this)} 
-                                topMenuVisitor = {this.state.topMenuVisitor}
+                                () =>
+                                <RegisterPageModel
+                                    showFooter={this.showFooter.bind(this)}
+                                    hideFooter={this.hideFooter.bind(this)}
+                                    topMenuVisitor = {this.state.topMenuVisitor}
                                 />
                             }
                         />
                         <Route path="/avatar" component={Avater_}/>
-                        {/* <Route path="/person_center" component={PersonCenter}/> */}
-                        <Route path="/person_center"
+                        <Route
+                            exact
+                            path="/personal_center/:str"
                             render={
-                                () =><PersonalCenterPageModel/>
+                                () =>
+                                <PersonalCenterPageModel ref={this.setPerCenPageModel.bind(this)}/>
                             }
                         />
-                        <Route path="/cart" component={Cart}/>
+                        <Route 
+                            path="/personal_center/cart" 
+                            render={
+                                ()=>
+                                <CartPageModel
+                                    perCenPageModel={this.state.perCenPageModel}
+                                />
+                            }
+                        />
+                        <Route 
+                            path="/personal_center/order" 
+                            render={
+                                ()=>
+                                <OrderPageModel
+                                    perCenPageModel={this.state.perCenPageModel}
+                                />
+                            }
+                        />
+                        <Route 
+                            path="/personal_center/mine" 
+                            render={
+                                ()=>
+                                <MinePageModel
+                                    perCenPageModel={this.state.perCenPageModel}
+                                />
+                            }
+                        />
                         <PageBottom/>
                     </div>
                 </Router>

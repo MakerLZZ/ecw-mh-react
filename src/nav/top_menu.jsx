@@ -51,9 +51,8 @@ class TopMenu extends Component {
 						} className='user-cart'>
 						<Cart/>
 					</SubMenu>
-
-					<Menu.Item key="person_center">
-						<Link to="/person_center" target="">个人中心</Link>
+					<Menu.Item key="personal_center">
+						<Link to="/personal_center/mine" target="">个人中心</Link>
 					</Menu.Item>
 				</Menu>
 			</div>

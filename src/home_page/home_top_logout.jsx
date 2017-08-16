@@ -25,9 +25,8 @@ class HomeTopLogout extends Component {
                 <div className="indent-condition">
                     <div className="not-login">
                         <div className="not-login-button">
-                            {/* {console.log(this.props.topMenuVisitor)} */}
-                            <a 
-                                //onClick={this.props.topMenuVisitor.showModal}
+                            <a
+                                onClick={()=>this.props.topMenuVisitor.showModal()}
                             >登录</a>
                         </div>
                         <div className="not-login-button">
