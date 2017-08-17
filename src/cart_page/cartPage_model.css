@@ -1,8 +1,12 @@
 .cart-page-model {
     margin: 0 200px 0 350px;
+    max-width: 797px;
     min-height: 200px;
-    background-color: #f4f4f4;
     font-family: Microsoft YaHei
+}
+
+.cart-bottom-border {
+    height: 1px;
 }
 
 .cart-title {
@@ -73,4 +77,90 @@
 
 .cart-item-box {
     margin-top: -10px;
+}
+
+.cart-submit-row {
+    width: 797px;
+    height: 50px;
+    background-color: #e5e5e5;
+    line-height: 50px;
+    position: fixed;
+    bottom: 0;
+}
+
+.cart-page-model .row-unfixed {
+    position: relative;
+    top: 0;
+}
+
+.cart-submit-row .left {
+    float: left;
+    height: 50px;
+}
+
+.cart-submit-row .left a {
+    padding: 0 8px;
+    color: #000;
+    text-decoration: none;
+}
+
+.cart-submit-row .left .select-all {
+    margin-left: 3px;
+}
+
+.cart-submit-row .left .delete-all:hover {
+    color: #F40
+}
+
+.cart-submit-row .left .ant-checkbox-wrapper {
+    margin: 0 0 0 13px;
+}
+
+.cart-submit-row .right {
+    float: right;
+    height: 50px;
+    color: #000;
+}
+
+.cart-submit-row .right .right-span-num {
+    font-weight: 700;
+    font-size: 22px;
+    padding: 0 3px;
+    color: #f40;
+}
+
+.cart-submit-row .right .right-span-title {
+    margin-right: 5px
+}
+
+.cart-submit-row .right .right-span-icon-hidden {
+    display: none;
+}
+
+.cart-submit-row .right .right-span-icon {
+    color: #f40;
+}
+
+.cart-submit-row .submit {
+    width: 120px;
+    height: 50px;
+}
+
+.cart-submit-row .submit-button {
+    width: 120px;
+    height: 50px;
+    border: 0;
+    background-color: #B0B0B0;
+    text-align: center;
+    color: #fff;
+    border-left: 1px solid #e7e7e7;
+    width: 119px;
+    cursor: not-allowed;
+    text-decoration: none;
+    font-size: 20px;
+    outline: none;
+}
+
+.cart-submit-row .selected-num {
+    margin-right: 50px;
 }

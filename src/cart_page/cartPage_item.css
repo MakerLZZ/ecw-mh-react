@@ -1,10 +1,20 @@
 .cart-item {
+    margin-bottom: 18px;
     height: 120px;
     line-height: 120px;
     border: 1px solid #c1bbbb;
     color: #000;
     font-size: 12px;
     background-color: #fcfcfc;
+}
+
+.cart-item-checked {
+    height: 120px;
+    line-height: 120px;
+    border: 1px solid #c1bbbb;
+    color: #000;
+    font-size: 12px;
+    background-color: #fff8e1;
 }
 
 .cart-item-hidden {
@@ -22,10 +32,6 @@
 
 .cart-item li div {
     height: 100%;
-}
-
-.cart-item ul li {
-    margin-bottom: 18px;
 }
 
 .cart-item .detail {
@@ -165,6 +171,11 @@
     text-align: center;
 }
 
-.cart-item .option button {
-    height: 30px;
+.cart-item .option .option-row a {
+    color: #000;
+    text-decoration: none;
+}
+
+.cart-item .option .option-row a:hover {
+    color: #F40
 }

@@ -1,31 +1,31 @@
 import React, {Component} from 'react';
 import './cartPage_item.css'
-import Goods from './cart_page_img/goods_img.png'
 import {Checkbox} from 'antd'
 
-const inventory = 520;
-const num = 10;
-const unit = 19.00;
 class CartPageItem extends Component {
     state={
-        value: num,
-        price: num*unit,
+        value: this.props.cartItemNum,
+        price: this.props.cartItemNum*this.props.cartItemUnit,
         reduceClassName: 'reduce',
         increaseClassName: 'increase',
         tipClassName: 'goods-num-tip hidden',
-        itemClassName:'cart-item'
+        itemClassName:'cart-item',
+        checked:false
     }
 
     componentWillMount() {
-        this.setState({reduceClassName: 'disable-reduce reduce'})
+        if(this.state.value===1){
+            this.setState({reduceClassName: 'disable-reduce reduce'})
+        }
     }
 
     onChange(o) {
+        var unit = this.props.cartItemUnit
         this.setState({tipClassName: 'goods-num-tip hidden'})
         const reg = /^[0-9]*[1-9][0-9]*$/;
         var newValue = parseInt(o.target.value,10);
         var minValue = 1;
-        var maxValue = inventory;
+        var maxValue = this.props.cartItemInventory;
         if (newValue >= maxValue) {  
             //this.refs.numInput.select();
             this.setState({
@@ -51,9 +51,10 @@ class CartPageItem extends Component {
     }
 
     handleReduceClick() {
+        var unit = this.props.cartItemUnit
         var currentValue = this.state.value;
         var minValue = 1;
-        var maxValue = inventory;
+        var maxValue = this.props.cartItemInventory;
         if (currentValue <= maxValue) {
             this.setState({tipClassName: 'goods-num-tip hidden'})
         }
@@ -77,8 +78,9 @@ class CartPageItem extends Component {
     }
 
     handleIncreaseClick() {
+        var unit = this.props.cartItemUnit
         var minValue = 1;
-        var maxValue = inventory;
+        var maxValue = this.props.cartItemInventory;
         var currentValue = this.state.value;
         if (currentValue <= maxValue) {
             this.setState({tipClassName: 'goods-num-tip hidden'})
@@ -108,22 +110,51 @@ class CartPageItem extends Component {
         //异步删除购物车该条信息
     }
 
+    checkboxChange(e){
+        var checked = e.target.checked;
+        if(checked){
+            this.setState({
+                itemClassName:'cart-item cart-item-checked',
+                checked:true
+            })
+        }else{
+            this.setState({
+                itemClassName:'cart-item',
+                checked:false
+            })
+        }
+    }
+
+    checked(){
+        this.setState({
+            itemClassName:'cart-item cart-item-checked',
+            checked:true
+        })
+    }
+
+    unChecked(){
+        this.setState({
+            itemClassName:'cart-item',
+            checked:false
+        })
+    }
+
     render() {
         return (
             <div className={this.state.itemClassName} id=''>
                 <ul>
                     <li className='detail'>
                         <div className='detail-row'>
-                            <div className='detail-item detail-checkbox'><Checkbox/></div>
-                            <div className='detail-item detail-img'><img src={Goods} alt='' /></div>
+                            <div className='detail-item detail-checkbox'><Checkbox checked={this.state.checked} onChange={(e)=>this.checkboxChange(e)} /></div>
+                            <div className='detail-item detail-img'><img src={this.props.cartItemImgSrc} alt='' /></div>
                             <div className='detail-item detail-title'>
-                                Lay’s/乐事薯片飘香麻辣锅味70g*6袋 休闲膨化吃货零食
+                                {this.props.cartItemTitle}
                             </div>
                         </div>
                     </li>
                     <li className='unit'>
                         <div className='unit-row'>
-                            <span>￥{unit}</span>
+                            <span>￥{this.props.cartItemUnit}</span>
                         </div>
                     </li>
                     <li className='num'>
@@ -145,7 +176,7 @@ class CartPageItem extends Component {
                                 </span>
                             </div>
                             <div className={this.state.tipClassName}>
-                                最多只能购买{inventory}件
+                                最多只能购买{this.props.cartItemInventory}件
                             </div>
                         </div>
                     </li>
@@ -160,6 +191,7 @@ class CartPageItem extends Component {
                         </div>
                     </li>
                 </ul>
+                {this.props.children}
             </div>
         );
     }
