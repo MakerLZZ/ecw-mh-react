@@ -2,8 +2,13 @@
     height: 120px;
     line-height: 120px;
     border: 1px solid #c1bbbb;
+    color: #000;
     font-size: 12px;
     background-color: #fcfcfc;
+}
+
+.cart-item-hidden {
+    display: none;
 }
 
 .cart-item ul {
@@ -12,6 +17,10 @@
 
 .cart-item li {
     float: left;
+    height: 100%;
+}
+
+.cart-item li div {
     height: 100%;
 }
 
@@ -59,6 +68,9 @@
 .cart-item .unit {
     width: 120px;
     text-align: center;
+    color: #3c3c3c;
+    font-weight: 700;
+    font-family: Verdana, Tahoma, arial;
 }
 
 .cart-item .num {
@@ -66,9 +78,86 @@
     text-align: center;
 }
 
+.cart-item .num .goods-num-select .disable-reduce,
+.cart-item .num .goods-num-select .disable-increase {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: #ededed;
+}
+
+.cart-item .num .goods-num-select a {
+    display: block;
+    _display: inline;
+    float: left;
+    width: 23px;
+    height: 23px;
+    border: 1px solid #ccc;
+    line-height: 23px;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    color: #616161;
+    background-color: #ededed;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.cart-item .num .goods-num-select input {
+    float: left;
+    margin: 0;
+    padding: 4px 0;
+    width: 39px;
+    height: 23px;
+    font-size: 12px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border: 1px solid #CCC;
+    outline: 0;
+    background: #FFF;
+}
+
+.cart-item .num .goods-num-select .reduce {
+    border-right: 0!important;
+}
+
+.cart-item .num .goods-num-select .increase {
+    border-left: 0!important;
+}
+
+.cart-item .num .num-row {
+    position: relative;
+}
+
+.cart-item .num .goods-num-box {
+    padding: 48px 17px;
+}
+
+.cart-item .num .goods-num-tip {
+    position: absolute;
+    margin: 0;
+    padding: 3px 5px;
+    height: 35px;
+    width: 85px;
+    line-height: 14px;
+    top: 71px;
+    left: 17px;
+    border: 1px solid #ffe1d3;
+    border-top: 0;
+    font-size: 12px;
+    color: #f40;
+    text-align: left;
+    word-break: break-all;
+    background-color: #fff0e7
+}
+
 .cart-item .price {
     width: 120px;
     text-align: center;
+    color: #F40;
+    font-weight: 700;
+    font-family: Verdana, Tahoma, arial;
 }
 
 .cart-item .option {

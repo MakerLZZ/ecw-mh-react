@@ -78,11 +78,6 @@ class GoodsDetailRight extends Component {
     }
 
     componentWillMount() {
-        this.startLoad();
-    }
-
-
-    startLoad() {
         this.setState({reduceClassName: 'disable-reduce reduce'})
     }
 
