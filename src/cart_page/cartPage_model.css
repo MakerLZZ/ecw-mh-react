@@ -1,7 +1,6 @@
 .cart-page-model {
     margin: 0 200px 0 350px;
     max-width: 797px;
-    min-height: 200px;
     font-family: Microsoft YaHei
 }
 
@@ -28,6 +27,11 @@
 
 .cart-title .all {
     width: 88px
+}
+
+.cart-title .all .all-a {
+    padding: 0 8px;
+    color: #000
 }
 
 .cart-title .all .ant-checkbox-wrapper {
@@ -77,6 +81,7 @@
 
 .cart-item-box {
     margin-top: -10px;
+    min-height: 427px
 }
 
 .cart-submit-row {
@@ -159,6 +164,27 @@
     text-decoration: none;
     font-size: 20px;
     outline: none;
+}
+
+.submit-button-able {
+    display: inline-block;
+    border: 0;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #f40;
+    text-align: center;
+    font-family: 'Lantinghei SC', 'Microsoft Yahei';
+    font-size: 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.submit-button-able:hover {
+    background: #f22d00;
 }
 
 .cart-submit-row .selected-num {

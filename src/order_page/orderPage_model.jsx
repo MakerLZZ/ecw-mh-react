@@ -13,8 +13,10 @@ class OrderPageModel extends Component {
 	render() {
 		return (
 			<div>
-				{/* {this.props.perCenPageModel ? this.props.perCenPageModel.liActive('order') : null} */}
-				我的订单
+				订单页
+				{/* option-row */}
+				{/* all-title */}
+				{/* order-box */}
 			</div>
 		);
 	}

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './cartPage_item.css'
 import {Checkbox} from 'antd'
+import PropTypes from 'prop-types'
 
 class CartPageItem extends Component {
     state={
@@ -11,6 +12,10 @@ class CartPageItem extends Component {
         tipClassName: 'goods-num-tip hidden',
         itemClassName:'cart-item',
         checked:false
+    }
+
+    static propTypes = {
+        checkSelectItem: PropTypes.func
     }
 
     componentWillMount() {
@@ -33,20 +38,20 @@ class CartPageItem extends Component {
                 price: maxValue*unit,
                 increaseClassName: 'disable-increase increase',
                 reduceClassName: 'reduce', tipClassName: 'goods-num-tip'
-            })
+            },this.props.checkSelectItem)
         } else if (newValue === minValue) {
             this.setState({
                 value: newValue,
                 price: newValue*unit,
                 reduceClassName: 'disable-reduce reduce',
                 increaseClassName: 'increase'
-            })
+            },this.props.checkSelectItem)
         } else if ((!isNaN(newValue) && reg.test(newValue)) || newValue.toString() === '') {
             this.setState({
                 value: newValue,
                 price: newValue*unit,
                 increaseClassName: 'increase'
-            })
+            },this.props.checkSelectItem)
         }
     }
 
@@ -64,13 +69,13 @@ class CartPageItem extends Component {
             this.setState({
                 value: valueReduce,
                 price: valueReduce*unit
-            })
+            },this.props.checkSelectItem)
         } else if (valueReduce === minValue) {
             this.setState({
                 value: valueReduce,
                 price: valueReduce*unit,
                 reduceClassName: 'disable-reduce reduce'
-            })
+            },this.props.checkSelectItem)
         }
         if (valueReduce < maxValue) {
             this.setState({increaseClassName: 'increase'})
@@ -90,13 +95,13 @@ class CartPageItem extends Component {
             this.setState({
                 value: valueIncrease,
                 price: valueIncrease*unit
-            })
+            },this.props.checkSelectItem)
         } else if (valueIncrease === maxValue) {
             this.setState({
                 value: valueIncrease,
                 price: valueIncrease*unit,
                 increaseClassName: 'disable-increase increase'
-            })
+            },this.props.checkSelectItem)
         }
         if (valueIncrease > minValue) {
             this.setState({reduceClassName: 'reduce'})
@@ -105,8 +110,9 @@ class CartPageItem extends Component {
 
     deleteItem(){
         this.setState({
-            itemClassName:'cart-item-hidden'
-        })
+            itemClassName:'cart-item-hidden',
+            checked:false
+        },this.props.checkSelectItem)
         //异步删除购物车该条信息
     }
 
@@ -116,12 +122,12 @@ class CartPageItem extends Component {
             this.setState({
                 itemClassName:'cart-item cart-item-checked',
                 checked:true
-            })
+            },this.props.checkSelectItem)
         }else{
             this.setState({
                 itemClassName:'cart-item',
                 checked:false
-            })
+            },this.props.checkSelectItem)
         }
     }
 
@@ -139,13 +145,17 @@ class CartPageItem extends Component {
         })
     }
 
+    iOrNChecked(){
+        return this.state.checked;
+    }
+
     render() {
         return (
-            <div className={this.state.itemClassName} id=''>
+            <div className={this.state.itemClassName} id={this.props.id}>
                 <ul>
                     <li className='detail'>
                         <div className='detail-row'>
-                            <div className='detail-item detail-checkbox'><Checkbox checked={this.state.checked} onChange={(e)=>this.checkboxChange(e)} /></div>
+                            <div className='detail-item detail-checkbox'><Checkbox checked={this.state.checked} onChange={(e)=>this.checkboxChange(e)}/></div>
                             <div className='detail-item detail-img'><img src={this.props.cartItemImgSrc} alt='' /></div>
                             <div className='detail-item detail-title'>
                                 {this.props.cartItemTitle}
