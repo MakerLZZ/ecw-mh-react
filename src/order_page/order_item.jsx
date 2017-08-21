@@ -1,46 +1,56 @@
 import React, {Component} from 'react';
 import './order_item.css'
-import GoodsImg from './order_page_img/goods_img.png'
 
 class OrderItem extends Component {
     state={
-        condition:'待付款',
-        condition_button:'付款'
+        condition:this.props.condition,
+        conditionButton:this.props.condition_button,
+        conditionButtonClassName:'condition-button',
+        conditionStrClassName:'condition-str'
+    }
+
+    componentWillMount(){
+        var condition = this.props.condition;
+        if(condition==='交易成功'){
+            this.setState({
+                conditionButtonClassName:'condition-button-hidden',
+                conditionStrClassName:'condition-str-change'
+            })
+        }
     }
     
     render() {
         return (
             <div className='order-item-box'>
                 <div className='number-row'>
-                    <span className='date'>2017-08-18</span>
-                    <span>订单号：20200220202020202</span>
+                    <span className='date'>{this.props.date}</span>
+                    <span>订单号：{this.props.no}</span>
                 </div>
                 <div className='detail-row'>
                     <ul>
                         <li className='li-0'>
                             <div className='img'>
-                                <img src={GoodsImg} alt=""/>
+                                <img src={this.props.img_src} alt=""/>
                             </div>
-                            <div className='detail'>
-                                【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭
-                            </div>
+                            <div className='detail'>{this.props.detail}</div>
                         </li>
-                        <li className='li-1'><span>￥</span><span>10.00</span></li>
-                        <li className='li-1'><span>12</span></li>
-                        <li className='li-1 total'><span>￥</span><span>120.00</span></li>
+                        <li className='li-1'><span>￥</span><span>{this.props.price}</span></li>
+                        <li className='li-1'><span>{this.props.num}</span></li>
+                        <li className='li-1 total'><span>￥</span><span>{this.props.price*this.props.num}</span></li>
                         <li className='li-2 condition'>
                             <div className='li-2-condition'>
-                                <div className='condition-str'>
+                                <div className={this.state.conditionStrClassName}>
                                     <span>{this.state.condition}</span>
                                 </div>
-                                <div className='condition-button'>
-                                    <button>{this.state.condition_button}</button>
+                                <div className={this.state.conditionButtonClassName}>
+                                    <button>{this.state.conditionButton}</button>
                                 </div>
                             </div>
                         </li>
                         <li className='li-2 check-detail'><a>查看详情</a></li>
                     </ul>
                 </div>
+                {this.props.children}
             </div>
         );
     }

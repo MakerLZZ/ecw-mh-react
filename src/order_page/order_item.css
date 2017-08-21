@@ -91,6 +91,14 @@
     margin-bottom: 5px;
 }
 
+.order-item-box .detail-row .li-2-condition .condition-str-change {
+    margin-top: 20px;
+}
+
+.order-item-box .detail-row .li-2-condition .condition-button-hidden {
+    display: none;
+}
+
 .order-item-box .detail-row .li-2-condition .condition-button button {
     border: 0;
     border-radius: 3px;

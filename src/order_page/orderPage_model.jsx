@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './orderPage_model.css'
+import {Pagination} from 'antd'
 import PropTypes from 'prop-types'
 import {message} from 'antd'
 import GoodsImg from './order_page_img/goods_img.png'
@@ -37,91 +38,117 @@ const orderTitles = [
 const orders = [
     {
         'key': 0,
-        'no': '0',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '0.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }, {
         'key': 1,
-        'no': '1',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '1.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待发货',
+        'condition_button': '提醒发货'
     }, {
         'key': 2,
-        'no': '2',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '2.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待收货',
+        'condition_button': '收货'
     }, {
         'key': 3,
-        'no': '3',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '3.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'交易成功',
+        'condition_button': ''
     }, {
         'key': 4,
-        'no': '4',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '4.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }, {
         'key': 5,
-        'no': '5',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '5.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }, {
         'key': 6,
-        'no': '6',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '6.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }, {
         'key': 7,
-        'no': '7',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '7.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }, {
         'key': 8,
-        'no': '8',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '8.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }, {
         'key': 9,
-        'no': '9',
+        'date':'2017-08-18',
+        'no': '123123123123',
         'img_src': GoodsImg,
-        'goods_price': '9.00',
-        'goods_sales': 50,
-        'goods_title': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
-        'goods_location': '浙江杭州'
+        'detail': '【天猫超市】黑人牙膏双重薄荷225g清新口气有效防蛀去牙渍去口臭',
+        'price': '10.00',
+        'num': 50,
+        'condition':'待付款',
+        'condition_button': '付款'
     }
 ];
 
 class OrderPageModel extends Component {
 	static propsTypes = {
 		perCenPageModel: PropTypes.any
-	}
+    }
+    
+    state = {
+        orders:orders,
+        tatal:orders.length,
+        orderIndex:0,
+    }
 
 	componentWillMount(){
 		this.props.perCenPageModel ? this.props.perCenPageModel.liActive('order') : message.info("发生了未知的错误！")
@@ -134,7 +161,29 @@ class OrderPageModel extends Component {
 			}else{
 				this.refs[`item${i}`].thisUnFocus()
 			}
-		})
+        })
+
+        // var newOrders = []
+        // orders.forEach((v,i)=>{
+        //     if(v.condition===condition){
+        //         newOrders.push(orders[i])
+        //     }
+        // })
+
+        if(condition==='所有订单'){
+            this.setState({
+                orders:orders,
+                tatal:orders.length,
+                orderIndex:0,
+            })
+        }else{
+            var newOrders = orders.filter(v=>v.condition===condition)
+            this.setState({
+                orders:newOrders,
+                tatal:newOrders.length,
+                orderIndex:0,
+            })
+        }
 	}
 	
 	mapOrderTitleItem=()=>{
@@ -150,7 +199,44 @@ class OrderPageModel extends Component {
 					></OrderTitleItem>
             )
         })
-	}
+    }
+    
+    mapOrderItem=()=>{
+        var oldOrders = this.state.orders;
+        var pageSize = 10;
+        var orderIndex = this.state.orderIndex;
+        var flag = 0;
+
+        if ((oldOrders.length - orderIndex) <= pageSize) {
+            pageSize = oldOrders.length - orderIndex;
+        }
+        var newOrders = new Array(pageSize);
+        for (var i = orderIndex; i < orderIndex + pageSize; i++) {
+            newOrders[flag] = oldOrders[i];
+            flag++;
+        }
+
+        return newOrders.map((v,i) => {
+            return (
+                <OrderItem
+					key={v.key}
+					date={v.date}
+					no={v.no}
+					img_src={v.img_src}
+                    detail={v.detail}
+					price={v.price}
+					num={v.num}
+					condition={v.condition}
+                    condition_button={v.condition_button}
+					></OrderItem>
+            )
+        })
+    }
+
+    handlePagination = (page, pageSize) => {
+        var index = (page - 1) * pageSize;
+        this.setState({orderIndex: index})
+    }
 
 	render() {
 		return (
@@ -171,11 +257,16 @@ class OrderPageModel extends Component {
 						<li className='li-2'>交易操作</li>
 					</ul>
 				</div>
-				{/* order-box */}
 				<div className='indent-list'>
-					<OrderItem/>
-					{/*遍历每一条订单信息*/}
+                    {this.mapOrderItem()}
 				</div>
+
+                <Pagination
+                    className="page-row"
+                    total={this.state.tatal}
+                    defaultPageSize={10}
+                    onChange={this.handlePagination}
+                    />
 			</div>
 		);
 	}
