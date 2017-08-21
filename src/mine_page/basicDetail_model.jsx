@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import BasicDetailForm from './basicDetail_form'
 class BasicDetailModel extends Component {
-    
     render() {
         return (
             <div className='basic-detail-box'>
@@ -12,7 +11,9 @@ class BasicDetailModel extends Component {
                         <div><img alt='' /></div>
                     </div>
                 </div>
-                <BasicDetailForm/>
+                <div className='form'>
+                    <BasicDetailForm/>
+                </div>
             </div>
         );
     }
