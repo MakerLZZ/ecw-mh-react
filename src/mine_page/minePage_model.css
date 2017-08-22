@@ -37,7 +37,8 @@
     float: left;
 }
 
-.mine-nav .active {}
+
+/* .mine-nav .active {} */
 
 .mine-nav ul li a {
     color: #000;

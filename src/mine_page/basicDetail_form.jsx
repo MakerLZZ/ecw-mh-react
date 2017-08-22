@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Form,Input,Icon,Radio,Select,Button} from 'antd';
-
+import {Form,Input,Radio,Select,Button} from 'antd';
+import './basicDetail_form.css'
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
@@ -32,7 +32,7 @@ class BasicDetailForm extends Component {
                     span: 24
                 },
                 sm: {
-                    span: 6
+                    span: 2
                 }
             },
             wrapperCol: {
@@ -40,7 +40,25 @@ class BasicDetailForm extends Component {
                     span: 24
                 },
                 sm: {
-                    span: 14
+                    span: 4
+                }
+            }
+        };
+        const formItemColatLayout = {
+            labelCol: {
+                xs: {
+                    span: 24
+                },
+                sm: {
+                    span: 2
+                }
+            },
+            wrapperCol: {
+                xs: {
+                    span: 24
+                },
+                sm: {
+                    span: 10
                 }
             }
         };
@@ -60,7 +78,7 @@ class BasicDetailForm extends Component {
                                 message:'请输入长度大于2小于6的汉字'
                             }
                         ],
-                    })(<Input type="text"  placeholder="请输入长度大于2小于6的汉字"/>)}
+                    })(<Input type="text"/>)}
                 </FormItem>
                 <FormItem {...formItemLayout} label="性别">
                     {getFieldDecorator('sex',{
@@ -70,21 +88,19 @@ class BasicDetailForm extends Component {
                                 message: '至少选择一种性别'
                             }
                         ]
-                    })
-                    (
-                        <RadioGroup>
+                    })(<RadioGroup>
                             <Radio value="男">男</Radio>
                             <Radio value="女">女</Radio>
                         </RadioGroup>
                     )}
                 </FormItem>
-                <FormItem {...formItemLayout} label="星座" hasFeedback>
+                <FormItem {...formItemColatLayout} label="星座" hasFeedback>
                     {getFieldDecorator('constellation', {
                         rules:[
                             
                         ],
                     })(
-                        <Select placeholder="请选择一个星座">
+                        <Select placeholder="请选择一种星座">
                             <Option value='摩羯座'>摩羯座</Option>
                             <Option value='水瓶座'>水瓶座</Option>
                             <Option value='双鱼座'>双鱼座</Option>
@@ -101,7 +117,7 @@ class BasicDetailForm extends Component {
                     )}
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" htmlType="submit" className="">
+                    <Button type="primary" htmlType="submit" className="basicDetail-form-button">
                         保存
                     </Button>
                 </FormItem>
