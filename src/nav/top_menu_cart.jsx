@@ -56,7 +56,7 @@ class Cart extends Component {
                 </div>
                 <div className="top-menu-cart-bottom">
                     <p>
-                        <Link to="/cart" className="top-menu-cart-check" target="" style={{textDecoration:"none"}} >查看我的购物车</Link>
+                        <Link to="/personal_center/cart" className="top-menu-cart-check" target="" style={{textDecoration:"none"}} >查看我的购物车</Link>
                     </p>
                 </div>
             </div>

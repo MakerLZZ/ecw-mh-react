@@ -55,7 +55,7 @@
     color: #e88239;
 }
 
-.avatar-box .row {
+.avatar-box .box_row .row {
     display: inline-block;
     vertical-align: top;
 }
@@ -76,7 +76,7 @@
 }
 
 .avatar-box #save {
-    width: 60px;
+    width: 100px;
     height: 25px;
     font-size: 12px;
     text-align: center;
@@ -84,4 +84,8 @@
     border: 0;
     background-color: #f40;
     color: #fff;
+}
+
+.avatar-box .ant-upload-list-text {
+    width: 200px;
 }

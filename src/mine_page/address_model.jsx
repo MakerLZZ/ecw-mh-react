@@ -4,8 +4,11 @@ class AddressModel extends Component {
     
     render() {
         return (
-            <div>
-                我的地址
+            <div className='address-box'>
+                <div>新增收货地址</div>
+                <div>
+                    
+                </div>
             </div>
         );
     }

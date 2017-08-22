@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Form,Input,Radio,Select,Button} from 'antd';
 import './basicDetail_form.css'
+import {Form,Input,Radio,Select,Button} from 'antd';
+
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
