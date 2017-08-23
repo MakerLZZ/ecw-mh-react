@@ -1,0 +1,26 @@
+.order-submit-model {
+    margin: 0 200px;
+    width: 946px;
+    height: auto!important;
+    min-height: 200px;
+    font-family: Microsoft YaHei;
+}
+
+.order-submit-model .title-row {
+    border-bottom: 2px solid #BCBCBC;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px
+}
+
+.order-submit-model .title-row .left {
+    float: left;
+}
+
+.order-submit-model .title-row .right {
+    float: right;
+}
+
+.order-submit-model .form-row {
+    margin-top: 20px;
+}

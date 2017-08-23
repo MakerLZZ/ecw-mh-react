@@ -15,16 +15,7 @@ import PersonalCenterPageModel from './personalCenter_page/personal_center_model
 import CartPageModel from './cart_page/cartPage_model'
 import OrderPageModel from './order_page/orderPage_model'
 import MinePageModel from './mine_page/minePage_model'
-
-const Avater_ = ({match}) => {
-    console.log(match);
-    return (
-        <div>
-            <h1>AvatarPage</h1>
-        </div>
-    )
-}
-
+import OrderSubmitPageModel from './order_submit_page/order_submit_model'
 class App extends Component {
     state = {
         loginSuccess:true,
@@ -109,7 +100,6 @@ class App extends Component {
                                 />
                             }
                         />
-                        <Route path="/avatar" component={Avater_}/>
                         <Route
                             exact
                             path="/personal_center/:str"
@@ -145,6 +135,14 @@ class App extends Component {
                                 />
                             }
                         />
+                        <Route 
+                            path="/order_submit" 
+                            render={
+                                ()=>
+                                <OrderSubmitPageModel/>
+                            }
+                        />
+
                         <PageBottom/>
                     </div>
                 </Router>

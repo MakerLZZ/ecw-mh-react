@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './address_model.css'
-import { Table, Icon } from 'antd';
+import { Table } from 'antd';
 import AddressForm from './address_form'
 const columns = [{
     title: '收货人',
@@ -35,14 +35,14 @@ const columns = [{
     key: 'action',
     render: (text, record) => (
       <span>
-        <a href="#">修改</a>
+        <a>修改</a>
         <span className="ant-divider" />
-        <a href="#">删除</a>
+        <a>删除</a>
         <span className="ant-divider" />
-        <a href="#">{record.condition}</a>
+        <a>{record.condition}</a>
       </span>
     ),
-  }];
+}];
   
 const data = [
     {

@@ -36,12 +36,12 @@ class Avater extends Component {
         return (
             <div className='top-menu-avater'>
                 <div className='item-avater'>
-                    <Link to="/avatar">
+                    <Link to="/personal_center/mine">
                         <img src={avater} alt='' />
                     </Link>
                 </div>
                 <div className='item-detail'>
-                    <Link to="/person_center" className='nav-avater-a' style={{textDecoration:"none"}}>
+                    <Link to="/personal_center/mine" className='nav-avater-a' style={{textDecoration:"none"}}>
                         <span>信息管理</span>
                     </Link>
                 </div>
