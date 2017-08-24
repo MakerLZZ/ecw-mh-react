@@ -34,7 +34,7 @@ class MinePageModel extends Component {
     }
 
     state={
-        content:2
+        content:0
     }
 
     componentWillMount(){

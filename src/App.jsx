@@ -18,7 +18,7 @@ import MinePageModel from './mine_page/minePage_model'
 import OrderSubmitPageModel from './order_submit_page/order_submit_model'
 class App extends Component {
     state = {
-        loginSuccess:true,
+        loginSuccess:false,
         needFooter: true
     }
 

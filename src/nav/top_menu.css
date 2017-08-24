@@ -2,6 +2,14 @@ body {
     font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
 }
 
+.clear-float {
+    clear: both;
+}
+
+.top-menu {
+    min-width: 1347px;
+}
+
 .ant-menu-horizontal>.ant-menu-item {
     border: 0;
     padding: 0 5px;

@@ -23,13 +23,6 @@ class TopMenuVisitor extends Component {
         this.setState({visible: false})
     }
 
-    errorModal() {
-        Modal.error({
-            title: '出错了，亲！',
-            content: '你还未登录，还不可访问该页面哟！',
-        });
-    }
-
     render() {
         return (
             <div className={this.props.className}>
@@ -45,10 +38,10 @@ class TopMenuVisitor extends Component {
                     </li>
                     <li className='cart'>
                         <Icon type="shopping-cart" className="shopping-cart-icon" />
-                        <a onClick={()=>this.errorModal()}>购物车</a>
+                        <a disabled>购物车</a>
                     </li>
                     <li className='person_center'>
-                    <a onClick={()=>this.errorModal()}>个人中心</a>
+                        <a disabled>个人中心</a>
                     </li>
                 </ul>
                 <div className='fenkai'></div>

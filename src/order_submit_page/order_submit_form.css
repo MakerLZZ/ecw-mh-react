@@ -66,3 +66,15 @@
     margin-top: 10px;
     float: right
 }
+
+.clear-float {
+    clear: both;
+}
+
+.submit-button {
+    float: right;
+}
+
+.submit-button button {
+    border-radius: 0;
+}

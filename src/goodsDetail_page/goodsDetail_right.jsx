@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Icon} from 'antd';
 import './goodsDetail_right.css'
 import './animate.css'
+import {Link} from 'react-router-dom'
 import GoodsDetailRightImg from './goodsDetail_right_img'
 
 import bottom_img_1 from './goodsDetail_img/indent.png'
@@ -193,14 +194,14 @@ class GoodsDetailRight extends Component {
                 </div>
                 <div className='buy-box'>
                     <div className='buy'>
-                        <a href="" className='btn-a'>立即购买</a>
+                        <Link to="/order_submit" className='btn-a'>立即购买</Link>
                     </div>
                     <div className='add'>
-                        <a href="" className='btn-a'><Icon
+                        <Link to="/personal_center/cart" className='btn-a'><Icon
                             type="shopping-cart"
                             style={{
                 marginRight: 5
-            }}/>加入购物车</a>
+            }}/>加入购物车</Link>
                     </div>
                 </div>
                 <div className='bottom'>

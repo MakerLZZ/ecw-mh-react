@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import HomeTopLogin from './home_top_login';
 import HomeTopLogout from './home_top_logout';
 import {Carousel} from 'antd';
 import './home_top.css';
 import ad from './home_page_img/ad.png';
 import TopGoods from './home_page_img/top_goods.png';
-import Ad_Img_1 from './home_page_img/carousel_ad_1.png'
+// import Ad_Img_1 from './home_page_img/carousel_ad_1.png'
 import Ad_Img_2 from './home_page_img/carousel_ad_2.png'
 import Ad_Img_3 from './home_page_img/carousel_ad_3.png'
 
@@ -22,7 +23,7 @@ class HomePageTop extends Component {
                 <div className="carousel-ad">
                     <Carousel autoplay>
                         <div>
-                            <img src={Ad_Img_1} alt=""/>
+                            <img src={Ad_Img_3} alt=""/>
                         </div>
                         <div>
                             <img src={Ad_Img_2} alt=""/>
@@ -46,13 +47,13 @@ class HomePageTop extends Component {
                         <div className="goods-max-title">
                             <span>热门推荐</span>
                         </div>
-                        <a href="" target="_blank">
+                        <Link to={"/goods_detail/"+0}>
                             <div className="goods">
                                 <div className="goods-detail-max" id="goods-detail-max-img"><img src={TopGoods} alt="" /></div>
                                 <div className="goods-detail-max" id="goods-detail-max-name">神厨小福贵</div>
                                 <div className="goods-detail-max" id="goods-detail-max-price">销量：20</div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
 
                 </div>

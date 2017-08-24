@@ -1,7 +1,8 @@
 .nav-footer {
-    margin: 20px 0 20px 200px;
+    padding: 20px 0 20px 200px;
+    min-width: 1347px;
     vertical-align: middle;
-    height: 55px
+    height: 95px
 }
 
 .nav-footer-logo,
@@ -14,7 +15,7 @@
 }
 
 .nav-footer-search-box {
-    margin-left: 250px;
+    padding-left: 250px;
 }
 
 .nav-footer-search-box input {

@@ -152,7 +152,6 @@
 }
 
 .cart-submit-row .submit-button {
-    width: 120px;
     height: 50px;
     border: 0;
     background-color: #B0B0B0;
@@ -166,9 +165,12 @@
     outline: none;
 }
 
-.submit-button-able {
+.cart-submit-row .submit-button-hidden {
+    display: none;
+}
+
+.cart-submit-row .submit-button-able {
     display: inline-block;
-    border: 0;
     width: 120px;
     height: 50px;
     line-height: 50px;
@@ -180,11 +182,15 @@
     border-radius: 2px;
     text-decoration: none;
     outline: none;
-    cursor: pointer;
 }
 
-.submit-button-able:hover {
+.cart-submit-row .submit-button-able:hover {
     background: #f22d00;
+    color: #fff
+}
+
+.cart-submit-row .submit-button-able-hidden {
+    display: none;
 }
 
 .cart-submit-row .selected-num {

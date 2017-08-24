@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './back_top.css';
+import {Link} from 'react-router-dom'
 import UserAvatar from './home_page_img/user_avatar.png';
 
 class HomeTopLogin extends Component {
@@ -7,9 +8,9 @@ class HomeTopLogin extends Component {
         return (
             <div className="user-area">
                 <div className="user-photo">
-                    <a href="/Reception/BasicDataView">
+                    <Link to="/personal_center/mine">
                         <img src={UserAvatar} alt=""/>
-                    </a>
+                    </Link>
                 </div>
                 <div className="user-name">
                     <div>
@@ -18,18 +19,18 @@ class HomeTopLogin extends Component {
                 </div>
                 <div className="indent-condition">
                     <div className="indent-condition">
-                        <a href="">
+                        <Link to="/personal_center/order">
                             <div className="indent-num">1</div>
                             <div>待收货</div>
-                        </a>
-                        <a href="">
+                        </Link>
+                        <Link to="/personal_center/order">
                             <div className="indent-num">2</div>
                             <div>待发货</div>
-                        </a>
-                        <a href="">
+                        </Link>
+                        <Link to="/personal_center/order">
                             <div className="indent-num">3</div>
                             <div>待付款</div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 .top-menu-visitor {
     border: 0;
+    min-width: 1347px;
     color: #3C3C3C;
     height: 36px;
     line-height: 36px;
@@ -9,6 +10,7 @@
 
 .top-menu-visitor .shopping-cart-icon {
     margin-right: 4px;
+    color: #bcbcbc
 }
 
 .top-menu-visitor li {
@@ -35,6 +37,22 @@
 
 .top-menu-visitor .register {
     margin-right: 620px;
+}
+
+.top-menu-visitor .cart:hover {
+    cursor: not-allowed;
+}
+
+.top-menu-visitor .person_center:hover {
+    cursor: not-allowed;
+}
+
+.top-menu-visitor .cart a {
+    color: #bcbcbc;
+}
+
+.top-menu-visitor .person_center a {
+    color: #bcbcbc;
 }
 
 .fenkai {

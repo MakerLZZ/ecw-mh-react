@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Checkbox,message} from 'antd'
 import CartPageItem from './cartPage_item'
 import GoodsImg from './cart_page_img/goods_img.png'
+import {Link} from 'react-router-dom'
 import $ from 'jquery'
 
 const cartAll = [
@@ -51,6 +52,7 @@ class CartPageModel extends Component {
         allChecked:false,
         spanIconClassName:'right-span-icon-hidden',
         submitButtonClassName:'submit-button',
+        submitButtonAbleClassName:'submit-button-able-hidden',
         selectRowClassName:'cart-submit-row',
         selectedNum:0,
         tatalPrice:0.00,
@@ -69,7 +71,8 @@ class CartPageModel extends Component {
             this.setState({
                 allChecked:true,
                 spanIconClassName:'right-span-icon',
-                submitButtonClassName:'submit-button-able',
+                submitButtonClassName:'submit-button-hidden',
+                submitButtonAbleClassName:'submit-button-able'
             },()=>this.checkSelectItem())
         }else{
             cartAll.forEach((v,i)=>{
@@ -79,6 +82,7 @@ class CartPageModel extends Component {
                 allChecked:false,
                 spanIconClassName:'right-span-icon-hidden',
                 submitButtonClassName:'submit-button',
+                submitButtonAbleClassName:'submit-button-able-hidden'
             },()=>this.checkSelectItem())
         }
     }
@@ -91,7 +95,8 @@ class CartPageModel extends Component {
             this.setState({
                 allChecked:false,
                 spanIconClassName:'right-span-icon-hidden',
-                submitButtonClassName:'submit-button',
+                submitButtonClassName:'submit-button-hidden',
+                submitButtonAbleClassName:'submit-button-able'
             },()=>this.checkSelectItem())
         }else{
             cartAll.forEach((v,i)=>{
@@ -100,7 +105,8 @@ class CartPageModel extends Component {
             this.setState({
                 allChecked:true,
                 spanIconClassName:'right-span-icon',
-                submitButtonClassName:'submit-button-able',
+                submitButtonClassName:'submit-button',
+                submitButtonAbleClassName:'submit-button-able-hidden'
             },()=>this.checkSelectItem())
         }
     }
@@ -147,12 +153,14 @@ class CartPageModel extends Component {
         if(haveItemChecked){
             this.setState({
                 spanIconClassName:'right-span-icon',
-                submitButtonClassName:'submit-button-able',
+                submitButtonClassName:'submit-button-hidden',
+                submitButtonAbleClassName:'submit-button-able'
             })
         }else{
             this.setState({
                 spanIconClassName:'right-span-icon-hidden',
                 submitButtonClassName:'submit-button',
+                submitButtonAbleClassName:'submit-button-able-hidden'
             })
         }
     }
@@ -205,6 +213,10 @@ class CartPageModel extends Component {
         })
     }
 
+    cartSubmit(){
+
+    }
+
     componentDidMount(){
         this.scrollRoll();
     }
@@ -239,7 +251,8 @@ class CartPageModel extends Component {
                         <a className='delete-all'>删除</a>
                     </div>
                     <div className='right submit'>
-                        <button className={this.state.submitButtonClassName}>结&nbsp;算</button>
+                        <Link to='/personal_center/cart' className={this.state.submitButtonClassName}>结&nbsp;算</Link>
+                        <Link to='/order_submit' className={this.state.submitButtonAbleClassName}>结&nbsp;算</Link>
                     </div>
                     <div className='right'>
                         <span className='right-span-title'>合计&nbsp;:</span>

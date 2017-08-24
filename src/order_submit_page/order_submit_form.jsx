@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './order_submit_form.css'
-import {Form ,Radio,Table} from 'antd';
+import {Form ,Radio,Table,Button} from 'antd';
 import AddressItem from './address_item'
 import GoodsImg from './order_submit_page_img/goods_img.png'
 const FormItem = Form.Item;
@@ -188,6 +188,12 @@ class OrderSubmitForm extends Component {
                         </div>
                     </div>
                 </div>
+                <div className='clear-float'></div>
+                <FormItem className='submit-button'>
+                    <Button type="primary" htmlType="submit" className="">
+                        确认订单
+                    </Button>
+                </FormItem>
             </Form>
         );
     }

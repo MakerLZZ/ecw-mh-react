@@ -55,6 +55,7 @@ class TopMenu extends Component {
 						<Link to="/personal_center/mine" target="">个人中心</Link>
 					</Menu.Item>
 				</Menu>
+				<div className='clear-float'></div>
 			</div>
 
 		);
