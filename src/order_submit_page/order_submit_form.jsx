@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './order_submit_form.css'
-import {Form ,Radio,Table,Button} from 'antd';
+import {Form ,Radio,Table,Button,Modal} from 'antd';
 import AddressItem from './address_item'
 import GoodsImg from './order_submit_page_img/goods_img.png'
 const FormItem = Form.Item;
@@ -119,7 +119,10 @@ class OrderSubmitForm extends Component {
     }
 
     radioOnChange=(e)=>{
-        alert('更换地址后，您需要重新确认订单信息');
+        Modal.info({
+            title: '提示',
+            content: '更换地址后，您需要重新确认订单信息',
+        });
         var key = e.target.value;
         address.forEach((v,i)=>{
             if(v.key===key){

@@ -86,7 +86,10 @@ class App extends Component {
                         <Route
                             exact
                             path="/goods_detail/:id"
-                            render={({match}) =><GoodsDetailPageModel no = {match.params.id}/>}
+                            render={({match}) =><GoodsDetailPageModel
+                            no = {match.params.id}
+                            loginSuccess={this.state.loginSuccess}
+                            />}
                         />
                         <Route
                             exact
@@ -142,7 +145,6 @@ class App extends Component {
                                 <OrderSubmitPageModel/>
                             }
                         />
-
                         <PageBottom/>
                     </div>
                 </Router>

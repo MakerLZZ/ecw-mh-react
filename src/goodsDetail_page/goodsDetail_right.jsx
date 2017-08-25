@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Icon} from 'antd';
+import {Icon,Modal} from 'antd';
 import './goodsDetail_right.css'
 import './animate.css'
 import {Link} from 'react-router-dom'
@@ -11,7 +11,7 @@ import bottom_img_3 from './goodsDetail_img/safety.png'
 import bottom_img_4 from './goodsDetail_img/antd.png'
 import bottom_img_5 from './goodsDetail_img/card.png'
 import bottom_img_6 from './goodsDetail_img/add.png'
-
+import PropTypes from 'prop-types'
 var msg_1 = [
     {
         'key': 0,
@@ -56,6 +56,13 @@ var goodsDetail = [
 
 const inventory = parseInt(goodsDetail[0].goodsInventory,10);
 
+var button_style = {
+    disabled:'disabled'
+}
+
+var button_able_style = {
+}
+
 class GoodsDetailRight extends Component {
     MapItem = (flag) => {
         if (flag) {
@@ -71,11 +78,16 @@ class GoodsDetailRight extends Component {
         }
     }
 
+    static propsTypes = {
+        loginSuccess: PropTypes.bool
+    }
+
     state = {
         value: 1,
         reduceClassName: 'reduce',
         increaseClassName: 'increase',
-        tipClassName: 'goods-num-tip hidden'
+        tipClassName: 'goods-num-tip hidden',
+        buttonStyle:{}
     }
 
     componentWillMount() {
@@ -133,6 +145,13 @@ class GoodsDetailRight extends Component {
         if (valueIncrease > minValue) {
             this.setState({reduceClassName: 'reduce'})
         }
+    }
+
+    notLoginTip(){
+        Modal.warning({
+            title: '操作有误',
+            content: '您还没有登录，不能完成此操作',
+          });
     }
 
     render() {
@@ -194,14 +213,19 @@ class GoodsDetailRight extends Component {
                 </div>
                 <div className='buy-box'>
                     <div className='buy'>
-                        <Link to="/order_submit" className='btn-a'>立即购买</Link>
+                        {
+                            this.props.loginSuccess?
+                            <Link to="/order_submit" className='btn-a'>立即购买</Link>:
+                            <a className='btn-a' onClick={()=>this.notLoginTip()}>立即购买</a>
+                        }
                     </div>
                     <div className='add'>
-                        <Link to="/personal_center/cart" className='btn-a'><Icon
-                            type="shopping-cart"
-                            style={{
-                marginRight: 5
-            }}/>加入购物车</Link>
+                        {
+                            this.props.loginSuccess?
+                            <Link to="/personal_center/cart" className='btn-a'>
+                            <Icon type="shopping-cart" className='add-icon'/>加入购物车</Link>:
+                            <a className='btn-a' onClick={()=>this.notLoginTip()}>加入购物车</a>
+                        }
                     </div>
                 </div>
                 <div className='bottom'>

@@ -1,0 +1,27 @@
+.page-bottom {
+    margin: 55px 0 20px 200px;
+    max-width: 979px;
+    text-align: center
+}
+
+.page-bottom .title {
+    margin-right: 10px;
+    color: #6c6c6c
+}
+
+.page-bottom .title:hover {
+    color: #F40
+}
+
+.page-bottom .chat {
+    margin-right: 10px;
+    color: #ddd
+}
+
+.page-bottom .row-2 {
+    margin-top: 10px;
+}
+
+.versions {
+    color: #9c9c9c;
+}

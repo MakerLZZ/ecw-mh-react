@@ -252,6 +252,10 @@
     border-radius: 2px;
 }
 
+.goods-detail-right .buy-box .btn-a-n-able {
+    disabled: disabled;
+}
+
 .goods-detail-right .buy-box .buy a:hover {
     border-color: #F0CAB6;
     background: #FFD9BC;
@@ -260,6 +264,10 @@
 .goods-detail-right .buy-box .add a:hover {
     border-color: #F22D00;
     background: #F22D00;
+}
+
+.goods-detail-right .buy-box .add .add-icon {
+    margin-right: 5px;
 }
 
 .goods-detail-right .bottom {

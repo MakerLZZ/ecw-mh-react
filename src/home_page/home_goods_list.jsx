@@ -168,7 +168,7 @@ var msg = [
     }
 ];
 
-const PAGESIZE = 8;
+const PAGESIZE = 16;
 
 class HomePageGoodsList extends Component {
     constructor(props) {

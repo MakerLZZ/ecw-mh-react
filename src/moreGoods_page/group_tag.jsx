@@ -9,7 +9,7 @@ class GroupTag extends Component {
     
     render() {
         return (
-            <a href="" className='tag'>
+            <a className='tag'>
                 {this.props.text}
                 <Icon type='close' className='tag-icon' />
             </a>

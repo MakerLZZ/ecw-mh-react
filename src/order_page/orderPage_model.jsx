@@ -264,7 +264,7 @@ class OrderPageModel extends Component {
                 <Pagination
                     className="page-row"
                     total={this.state.tatal}
-                    defaultPageSize={10}
+                    defaultPageSize={8}
                     onChange={this.handlePagination}
                     />
 			</div>
